@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="recursos/bootstrap-5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="recursos/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="recursos/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="recursos/icons/normalize.css">
+    <link rel="stylesheet" href="css/main.css" />
+
+    <title>Farmacia 701</title>
+</head>
+
+<body class="active anuncio delivery bg-light">
+
+    <!-- nav bar  -->
+
+    <header class="navbar navbar-light sticky-top bg-light  shadow py-3">
+        <nav class="container">
+            <a class="navbar-brand " href="#">
+                <img src="img/logo.png" alt="" width="50" height="50" />
+            </a>
+            
+            <div class="d-flex align-items-center col-7 justify-content-center">
+                <input class="form-control form-control-dark input__search " type="text"
+                    placeholder="Busca tu producto aqui" aria-label="Search" />
+                <a href="#" class="btn button__blue button__search"><i class="fa-solid fa-search"></i></a>
+            </div>
+            
+            <div class="navbar-nav cart__icon">
+                <a href="checkout.html" type="button" class="position-relative button__cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-secondary " ></span>
+                </a>
+            </div>
+            
+            <div class="form-check form-switch d-flex flex-column" style="padding: 0;">
+                <img src="img/usa.png" class="img-fluid usa"   style="width: 25px;" alt="bandera usa">
+                <input class="form-check-input switch" style="width: 30px; " type="checkbox" role="switch" id="flexSwitchCheck2">
+                <label class="form-check-label text-primary mx-1" for="flexSwitchCheck2"> <span>Bs 5.8</span></label>
+            </div>
+           
+        </nav>
+    </header>
+
+
+      <!-- ANUNCIO -->
+
+    <!-- <section class="anuncio_collapse">
+        <div class="sidebar">
+            <p class="text-center h6 text-primary text-uppercase fw-bold">Prueba nuestro buscador</p>
+            <p class=" mx-4 text-secondary">Haz tu búsqueda por alfabeto, nombre o componente activo</p>
+        </div>
+
+        <div class="delivery_gratis">
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn-close p-2 h6" onclick="quitar_ad()"></button>
+            </div>
+            <div class="oferta text-center">
+                <p class="h4 text-uppercase text-light fw-bold">Envio gratis</p>
+                <span class="text-white fs-1"><i class="fa-solid fa-truck-fast"></i></span>
+                <p class="text-dark">Para compras +10$</p>
+                <p class="text-dark">en Ciudad Bolívar</p>
+            </div>
+        </div>
+    </section> -->
+
+
+
+
+
+    <!-- carousel intro  -->
+
+    <section class="container py-3">
+
+        <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <!--data-bs-interval="2000"-->
+                    <img src="img/carousel/banner-1.jpg" class=" d-flex w-100 img-fluid"
+                        alt="imagen de carrusel numero uno">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/carousel/banner-1.jpg" class="d-flex w-100 img-fluid"
+                        alt="imagen de carrusel numero dos">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/carousel/banner-1.jpg" class="d-flex w-100 img-fluid"
+                        alt="imagen de carrusel numero tres">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+
+
+    <!-- separador anuncio  -->
+    <section class="separador mt-5 container py-2">
+        <div class="navbar">
+            <div class="container d-flex justify-content-center align-self-center ">
+                <span class="h6 text-uppercase mt-2 fw-bold text-d">unidos</span>
+                <span class="h6 text-uppercase"> <img src="img/logo.png" alt=""> <i class="fa-solid fa-plus"></i>  <img src="img/zoom.png" alt=""></span>
+                <span class="h6 text-uppercase mt-2 fw-bold text-d"> Delivery a nivel nacional <i class="fa-solid fa-truck-fast fs-4"></i></span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- carousel publicidad -->
+
+    <section id="ads" class="container mt-5">
+
+        <div class="py-4">
+            <p class="h3 head__title">Lo recomendado </p>
+        </div>
+
+        <div class="owl-carousel carousel__ads">
+            <div class="test"><img src="img/pubs/2.png" alt=""></div>
+            <div class="test"><img src="img/pubs/1.png" alt=""></div>
+            <div class="test"><img src="img/pubs/3.png" alt=""></div>
+            <div class="test"><img src="img/pubs/4.png" alt=""></div>
+            <div class="test"><img src="img/pubs/5.png" alt=""></div>
+            <div class="test"><img src="img/pubs/6.png" alt=""></div>
+        </div>
+    </section>
+
+
+    <!-- filter collapse  -->
+
+    <!-- <div class="filter__collapse ">
+        <div class="sidebar">
+            <p class="text-left h3 mx-3">Filtrar:</p>
+            <p class="mx-3">Seleccione la casilla</p>
+
+            
+            <div class="d-flex justify-content-between mx-4">
+                <div class="d-flex flex-column">
+                    <label for="" class="check__active"><input type="checkbox">A</label>
+                    <label for="" class=""><input type="checkbox">B</label>
+                    <label for="" class=""><input type="checkbox">C</label>
+                    <label for="" class=""><input type="checkbox">D</label>
+                    <label for="" class=""><input type="checkbox">E</label>
+                    <label for="" class=""><input type="checkbox">F</label>
+                    <label for="" class=""><input type="checkbox">G</label>
+                    <label for="" class=""><input type="checkbox">H</label>
+                    <label for="" class=""><input type="checkbox">I</label>
+                </div>
+
+                <div class="d-flex flex-column">
+                    <label for="" class=""><input type="checkbox">K</label>
+                    <label for="" class=""><input type="checkbox">J</label>
+                    <label for="" class=""><input type="checkbox">L</label>
+                    <label for="" class=""><input type="checkbox">M</label>
+                    <label for="" class=""><input type="checkbox">N</label>
+                    <label for="" class=""><input type="checkbox">O</label>
+                    <label for="" class=""><input type="checkbox">P</label>
+                    <label for="" class=""><input type="checkbox">Q</label>
+                    <label for="" class=""><input type="checkbox">R</label>
+                </div>
+
+                <div class="d-flex flex-column">
+                    <label for="" class=""><input type="checkbox">T</label>
+                    <label for="" class=""><input type="checkbox">U</label>
+                    <label for="" class=""><input type="checkbox">V</label>
+                    <label for="" class=""><input type="checkbox">S</label>
+                    <label for="" class=""><input type="checkbox">W</label>
+                    <label for="" class=""><input type="checkbox">X</label>
+                    <label for="" class=""><input type="checkbox">Y</label>
+                    <label for="" class=""><input type="checkbox">Z</label>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-3">
+                <button class="btn btn-primary col-4">Buscar</button>
+            </div>
+
+
+        </div>
+    </div> -->
+
+
+
+    <!-- Productos -->
+
+
+    <section id="products" class="container mt-2">
+
+
+
+        <div class="py-4">
+            <p class="h3 head__title text-center">Catálogo</p>
+            <!-- <div class="d-flex  justify-content-end">
+                <a class="h5 text-right filter__button">Filtrar <i class="fa-solid fa-filter"></i></a>
+            </div> -->
+            
+        </div>
+
+
+
+        <!-- Line -->
+        <div class=" row justify-content-center product__container">
+
+            <!-- product 1 -->
+
+            <div class="card col-md-4 col-sm-5 col-xs-1 ">
+                <div class="img__container">
+                    <img src="img/productos/celay gts.jpg" class="card-img-top img-fluid" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="table_container">
+                        <div>
+                            <h5 class="text-left card-title fw-bold table_cell-title">CELAY GOTAS 15 ML-COFASA- </h5>
+
+                        </div>
+                        <div class="d-flex justify-content-center fw-bold price ">
+                            <p class="card-text table_cell">Bs.</p>
+                            <p class="card-text table_cell">8.5</p>
+                        </div>
+                        <a href="#"
+                            class="d-flex justify-content-center btn btn-primary text-align-center d-block">Agregar</a>
+                        <div class=" d-flex justify-content-center">
+                            <!-- <a class="cart_cantidad_restar btn btn-primary" href="#"> - </a>
+                            <p class="cart_quantity">5</p>
+                            <a class="cart_cantidad_sumar btn btn-primary" href="#"> + </a> -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- product 2 -->
+
+
+            <div class="card col-md-4 col-sm-5 col-xs-1 ">
+                <div class="img__container">
+                    <img src="img/productos/Acetobenjbe.png" class="card-img-top img-fluid" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="table_container">
+                        <div>
+                            <h5 class="text-left card-title fw-bold table_cell-title">ACETOBEN JBE 120ML</h5>
+
+                        </div>
+                        <div class="d-flex justify-content-center fw-bold price ">
+                            <p class="card-text table_cell">Bs.</p>
+                            <p class="card-text table_cell">5.3</p>
+                        </div>
+                        <a href="#"
+                            class="d-flex justify-content-center btn btn-primary text-align-center d-block">Agregar</a>
+                        <div class=" d-flex justify-content-center ">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- product 3 -->
+
+            <div class="card col-md-4 col-sm-5 col-xs-2 ">
+                <div class="img__container">
+                    <img src="img/productos/AcidoFolicoGotas .png" class="card-img-top img-fluid" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="table_container">
+                        <div>
+                            <h5 class="text-left card-title fw-bold table_cell-title">ACIDO FOLICO GOT 15ML-KLINOS-</h5>
+
+                        </div>
+                        <div class="d-flex justify-content-center fw-bold price ">
+                            <p class="card-text table_cell">Bs.</p>
+                            <p class="card-text table_cell">30.5</p>
+                        </div>
+                        <a href="#"
+                            class="d-flex justify-content-center btn btn-primary text-align-center d-block">Agregar</a>
+                        <div class=" d-flex justify-content-center ">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- product 4 -->
+
+            <div class="card col-md-4 col-sm-5 col-xs-2 ">
+                <div class="img__container">
+                    <img src="img/productos/adel.png" class="card-img-top img-fluid" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="table_container">
+                        <div>
+                            <h5 class="text-left card-title fw-bold table_cell-title">ADEL UNG 50 GR</h5>
+
+                        </div>
+                        <div class="d-flex justify-content-center fw-bold price ">
+                            <p class="card-text table_cell">Bs.</p>
+                            <p class="card-text table_cell">42.5</p>
+                        </div>
+                        <a href="#"
+                            class="d-flex justify-content-center btn btn-primary text-align-center d-block">Agregar</a>
+                        <div class=" d-flex justify-content-center ">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- product 5 -->
+
+            <div class="card col-md-4 col-sm-5 col-xs-2 ">
+                <div class="img__container">
+                    <img src="img/productos/rhelen arnica plus cristal 100gr.jpg" class="card-img-top img-fluid"
+                        alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="table_container">
+                        <div>
+                            <h5 class="text-left card-title fw-bold table_cell-title">RHELEN ARNICA PLUS CRISTAL 100GR
+                            </h5>
+
+                        </div>
+                        <div class="d-flex justify-content-center fw-bold price ">
+                            <p class="card-text table_cell">Bs.</p>
+                            <p class="card-text table_cell">8.5</p>
+                        </div>
+                        <a href="#"
+                            class="d-flex justify-content-center btn btn-primary text-align-center d-block">Agregar</a>
+                        <div class=" d-flex justify-content-center">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- product 6 -->
+
+            <div class="card col-md-4 col-sm-5 col-xs-2 ">
+                <div class="img__container">
+                    <img src="img/productos/AlivetJbePed.jpg" class="card-img-top img-fluid" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="table_container">
+                        <div>
+                            <h5 class="text-left card-title fw-bold table_cell-title">ALIVET JAB PED 120 ML </h5>
+
+                        </div>
+                        <div class="d-flex justify-content-center fw-bold price ">
+                            <p class="card-text table_cell">Bs.</p>
+                            <p class="card-text table_cell">17.8</p>
+                        </div>
+                        <a href="#"
+                            class="d-flex justify-content-center btn btn-primary text-align-center d-block">Agregar</a>
+                        <div class=" d-flex justify-content-center">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- product 7 -->
+
+            <div class="card col-md-4 col-sm-5 col-xs-2 ">
+                <div class="img__container">
+                    <img src="img/productos/calamina calaminol.png" class="card-img-top img-fluid" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="table_container">
+                        <div>
+                            <h5 class="text-left card-title fw-bold table_cell-title">CALAMINOL-CALAMINA LOCION 100
+                                ML-CAPLIN- </h5>
+
+                        </div>
+                        <div class="d-flex justify-content-center fw-bold price ">
+                            <p class="card-text table_cell">Bs.</p>
+                            <p class="card-text table_cell">32.6</p>
+                        </div>
+                        <a href="#"
+                            class="d-flex justify-content-center btn btn-primary text-align-center d-block">Agregar</a>
+                        <div class=" d-flex justify-content-center">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- product 8 -->
+
+            <div class="card col-md-4 col-sm-5 col-xs-2 ">
+                <div class="img__container">
+                    <img src="img/productos/gerber good start sin lactosa 566gr.jpg" class="card-img-top img-fluid"
+                        alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="table_container">
+                        <div>
+                            <h5 class="text-left card-title fw-bold table_cell-title">GERBER GOOD START SIN LACTOSA
+                                566GR </h5>
+
+                        </div>
+                        <div class="d-flex justify-content-center fw-bold price ">
+                            <p class="card-text table_cell">Bs.</p>
+                            <p class="card-text table_cell">35.7</p>
+                        </div>
+                        <a href="#"
+                            class="d-flex justify-content-center btn btn-primary text-align-center d-block">Agregar</a>
+                        <div class=" d-flex justify-content-center">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- product 9 -->
+
+            <div class="card col-md-4 col-sm-5 col-xs-2 ">
+                <div class="img__container">
+                    <img src="img/productos/essentials gel imperfec 30ml.jpg" class="card-img-top img-fluid" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="table_container">
+                        <div>
+                            <h5 class="text-left card-title fw-bold table_cell-title">ESSENTIALS GEL IMPERFECCIONES 30ML
+                            </h5>
+
+                        </div>
+                        <div class="d-flex justify-content-center fw-bold price ">
+                            <p class="card-text table_cell">Bs.</p>
+                            <p class="card-text table_cell">45.3</p>
+                        </div>
+                        <a href="#"
+                            class="d-flex justify-content-center btn btn-primary text-align-center d-block">Agregar</a>
+                        <div class=" d-flex justify-content-center">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- product 10 -->
+
+            <div class="card col-md-4 col-sm-5 col-xs-2 ">
+                <div class="img__container">
+                    <img src="img/productos/Budecort Gotas 15ml.png" class="card-img-top img-fluid" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="table_container">
+                        <div>
+                            <h5 class="text-left card-title fw-bold table_cell-title">BUDECORT SOL 10 ML DFGDFG </h5>
+
+                        </div>
+                        <div class="d-flex justify-content-center fw-bold price ">
+                            <p class="card-text table_cell">Bs.</p>
+                            <p class="card-text table_cell">24.3</p>
+                        </div>
+                        <a href="#"
+                            class="d-flex justify-content-center btn btn-primary text-align-center d-block">Agregar</a>
+                        <div class=" d-flex justify-content-center">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- product 11 -->
+
+            <div class="card col-md-4 col-sm-5 col-xs-2 ">
+                <div class="img__container">
+                    <img src="img/productos/bevindazol susp.jpg" class="card-img-top img-fluid" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="table_container">
+                        <div>
+                            <h5 class="text-left card-title fw-bold table_cell-title">BEVINDAZOL SUSP 400 MG 10 ML</h5>
+
+                        </div>
+                        <div class="d-flex justify-content-center fw-bold price ">
+                            <p class="card-text table_cell">Bs.</p>
+                            <p class="card-text table_cell">15.5</p>
+                        </div>
+                        <a href="#"
+                            class="d-flex justify-content-center btn btn-primary text-align-center d-block">Agregar</a>
+                        <div class=" d-flex justify-content-center">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- product 12 -->
+
+            <div class="card col-md-4 col-sm-5 col-xs-2 ">
+                <div class="img__container">
+                    <img src="img/productos/angrip noche.png" class="card-img-top img-fluid" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="table_container">
+                        <div>
+                            <h5 class="text-left card-title fw-bold table_cell-title">ANGRIP COMPR X 3-NOCHE-</h5>
+
+                        </div>
+                        <div class="d-flex justify-content-center fw-bold price ">
+                            <p class="card-text table_cell">Bs.</p>
+                            <p class="card-text table_cell">5.3</p>
+                        </div>
+                        <a href="#"
+                            class="d-flex justify-content-center btn btn-primary text-align-center d-block">Agregar</a>
+                        <div class=" d-flex justify-content-center">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- product 13 -->
+
+            <div class="card col-md-4 col-sm-5 col-xs-2 ">
+                <div class="img__container">
+                    <img src="img/productos/centrum 30 tab.jpg" class="card-img-top img-fluid" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="table_container">
+                        <div>
+                            <h5 class="text-left card-title fw-bold table_cell-title">CENTRUM TAB X 30</h5>
+
+                        </div>
+                        <div class="d-flex justify-content-center fw-bold price ">
+                            <p class="card-text table_cell">Bs.</p>
+                            <p class="card-text table_cell">26.7</p>
+                        </div>
+                        <a href="#"
+                            class="d-flex justify-content-center btn btn-primary text-align-center d-block">Agregar</a>
+                        <div class=" d-flex justify-content-center">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- product 14 -->
+
+            <div class="card col-md-4 col-sm-5 col-xs-2 ">
+                <div class="img__container">
+                    <img src="img/productos/Flatoril gotas 20ml.jpg" class="card-img-top img-fluid" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="table_container">
+                        <div>
+                            <h5 class="text-left card-title fw-bold table_cell-title">FLATORIL GOTAS 80 MG 20 ML</h5>
+
+                        </div>
+                        <div class="d-flex justify-content-center fw-bold price ">
+                            <p class="card-text table_cell">Bs.</p>
+                            <p class="card-text table_cell">5.3</p>
+                        </div>
+                        <a href="#"
+                            class="d-flex justify-content-center btn btn-primary text-align-center d-block">Agregar</a>
+                        <div class=" d-flex justify-content-center">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- product 15 -->
+
+            <div class="card col-md-4 col-sm-5 col-xs-2 ">
+                <div class="img__container">
+                    <img src="img/productos/calcibon natal.png" class="card-img-top img-fluid" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="table_container">
+                        <div>
+                            <h5 class="text-left card-title fw-bold table_cell-title">CALCIBON NATAL FORTE TAB X 30</h5>
+
+                        </div>
+                        <div class="d-flex justify-content-center fw-bold price ">
+                            <p class="card-text table_cell">Bs.</p>
+                            <p class="card-text table_cell">60.4</p>
+                        </div>
+                        <a href="#"
+                            class="d-flex justify-content-center btn btn-primary text-align-center d-block">Agregar</a>
+                        <div class=" d-flex justify-content-center">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+        <!-- boton cargar mas -->
+        <div class="d-flex justify-content-center mt-3">
+            <button type="button" class="btn btn-outline-primary col-4">Cargar más <i
+                    class="fa-solid fa-arrow-down"></i></button>
+        </div>
+
+
+    </section>
+
+
+    <!-- footer  -->
+
+    <section id="footer" class="pt-5">
+        <footer class="footer mt-auto py-3 bg-dark">
+            <div class="container">
+                <div class="d-flex justify-content-center">
+                    <span class="text-secondary">Sponsored by Farmacia 701 ca &copy; Arturo Ruiz all rigths reserved</span>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+
+
+    <script src="recursos/jquery-3.6.0.min.js"></script>
+    <script src="recursos/bootstrap-5/js/bootstrap.min.js"></script>
+    <script src="recursos/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+    <script src="recursos/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <script src="recursos/icons/all.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
+<script>
+
+
+
+
+    $(document).ready(function () {
+        $(".owl-carousel").owlCarousel({
+            items: 4,
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            autoplayTimeout: 1000,
+            autoplayHoverPause: true
+        });
+
+        // let filter__button = document.querySelector(".filter_collapse");
+
+        // filter__button.addEventListener("click", function () {
+        //     document.querySelector("body").classList.remove("active");
+            
+        // })
+
+
+            let anuncio = document.querySelector("body");
+
+        anuncio.addEventListener("click", function () {
+            document.querySelector("body").classList.remove("anuncio");
+            
+        })
+ 
+    })
+
+        const quitar_ad = () => {
+            document.querySelector("body").classList.remove("delivery");
+        }
+
+
+  
+    // // Al iniciar inserta en la tabla lo que haya en sessionStorage por si acaso
+    addEventListener('DOMContentLoaded', itemsCount);
+
+</script>
