@@ -52,7 +52,7 @@
                                                 placeholder="Password" aria-label="Password" name="password">
                                         </div>
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" name="remember" id="remember">
+                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" value="true">
                                             <label class="form-check-label" for="remember">Remember me</label>
                                         </div>
                                         <div class="text-center">
