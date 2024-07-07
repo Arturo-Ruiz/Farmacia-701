@@ -15,6 +15,6 @@ class LogoutController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('login')->with('success', 'You have been logged out.');
+        return redirect()->route('dashboard-login')->with('success', 'You have been logged out.');
     }
 }
