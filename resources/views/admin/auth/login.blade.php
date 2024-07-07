@@ -37,22 +37,38 @@
                                     <form role="form" method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="mb-3">
-                                            <input type="email"
-                                                class="form-control form-control-lg" placeholder="Email"
-                                                aria-label="Email" name="email">
+                                            <input type="email" class="form-control form-control-lg"
+                                                placeholder="Email" aria-label="Email" name="email">
                                         </div>
                                         @error('email')
-                                        <div class="alert alert-danger" role="alert">
-                                            <strong>Danger!</strong> This is a danger alert—check it out!
-                                        </div>
+                                            <div class="alert alert-danger" role="alert">
+                                                <strong>Danger!</strong> This is a danger alert—check it out!
+                                            </div>
                                         @enderror
                                         
+                                        @error('password')
+                                            <div class="alert alert-danger" role="alert">
+                                                <strong>Danger!</strong> This is a danger alert—check it out!
+                                            </div>
+                                        @enderror
+
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+
                                         <div class="mb-3">
                                             <input type="password" class="form-control form-control-lg"
                                                 placeholder="Password" aria-label="Password" name="password">
                                         </div>
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" value="true">
+                                            <input class="form-check-input" type="checkbox" name="remember"
+                                                id="remember" value="true">
                                             <label class="form-check-label" for="remember">Remember me</label>
                                         </div>
                                         <div class="text-center">
