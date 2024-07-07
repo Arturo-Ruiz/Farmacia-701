@@ -34,7 +34,7 @@
                                     <p class="mb-0">Enter your email and password to sign in</p>
                                 </div>
                                 <div class="card-body">
-                                    <form role="form" method="POST" action="{{ route('dashboard-login') }}">
+                                    <form role="form" method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="mb-3">
                                             <input type="email"
