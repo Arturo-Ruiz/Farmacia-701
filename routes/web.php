@@ -7,11 +7,11 @@ Route::get('/', function () {
 });
 
 //Route return hello world
-// Route::get('/hello-world', function () {
-//     return 'Hello World';
-// });
+Route::get('/hello-world', function () {
+    return 'Hello World';
+});
 
 // //Route return view
-// Route::get('/test', function () {
-//     return view('test');
-// });
+Route::get('/test', function () {
+    return view('test');
+});
