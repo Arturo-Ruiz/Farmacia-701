@@ -183,19 +183,32 @@
     </section>
 
 
+    <a href="https://api.whatsapp.com/send?phone=51955081075&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." class="float" target="_blank">
+        <i class="fa-brands fa-whatsapp my-float"></i>
+    </a>
 
 
 
-    <footer class="bg-primary text-light pt-5 pb-3">
+
+    <footer class="bg-primary-color text-light pt-5 pb-3">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mb-4">
                     <div class="rounded-circle bg-white shadow-1-strong d-flex align-items-center justify-content-center mb-4 mx-auto" style="width: 150px; height: 150px;">
                         <img src="https://www.farmacia701.com/img/logo.png" height="140px" alt="" />
                     </div>
-                    <p class="text-center">Encuentra todos tús medicamentos, productos de salud, cuidado personal y suplementos deportivos</p>
-                    <p class="text-center">Úbicanos en Ciudad Bolívar - Venezuela.</p>
+                    <p class="text-center">Encuentra todos tús medicamentos, productos de salud, cuidado personal y suplementos deportivos.</p>
+                    <p class="text-center">Av. 17 de diciembre C/C Calle Madrid, Local # 28, Séctor Negro Primero, Parroquia catedral, Frente a la clínica Santa Ana, Ciudad Bolívar - Venezuela.</p>
                     <p class="text-center">¡Somos tus Aliados en Salud! <br> Farmacia 701, C.A</p>
+
+                    <div class="d-flex align-items-center justify-content-center gap-3">
+                        <div>
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                    </div>
 
 
                 </div>
