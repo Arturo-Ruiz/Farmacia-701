@@ -9,7 +9,7 @@
 
     <title>Farmacia 701 - ¡Somos tus Aliados en Salud!</title>
 
-    <meta name="description" content="Farmacia 701 - ¡Somos tus Aliados en Salud!. Ubicada en Ciudad Bolívar con servicio de entrega a domicilio. Encuentra medicamentos, productos de salud, cuidado personal y suplementos.">
+    <meta name="description" content="Farmacia 701 - ¡Somos tus Aliados en Salud!. Ubicada en Ciudad Bolívar con servicio de entrega a domicilio. Encuentra medicamentos, productos de salud, cuidado personal y suplementos deportivos.">
 
     <meta name="keywords" content="Farmacia, Medicina, Médico, Medicamentos, Salud, Remedio, Farmacia en Ciudad Bolívar, medicamentos Ciudad Bolívar, farmacia cerca de mí, servicio de farmacia a domicilio, entrega de medicamentos Ciudad Bolívar, venta de medicamentos, medicinas Ciudad Bolívar, consultas farmacéuticas, asesoría farmacéutica, vitaminas, productos de cuidado personal, productos de salud, farmacias abiertas Ciudad Bolívar, remedios Ciudad Bolívar, productos naturales, salud Ciudad Bolívar, higiene personal, productos de bebé, suplementos alimenticios">
 
@@ -56,7 +56,7 @@
 
 </head>
 
-<body class="anuncio delivery">
+<body class="search-brand">
 
     <!-- Navbar -->
     <header class="navbar navbar-expand navbar-light bg-light shadow py-3">
@@ -69,16 +69,16 @@
             </div>
 
             <form class="d-flex align-items-center col-6 justify-content-center">
-                <input id="input_search" class="form-control form-control-dark input__search " type="text"
+                <input id="input_search" class="form-control form-control-dark input-search" type="text"
                     placeholder="Buscar" aria-label="Search" />
-                <button type="submit" id="search" class="btn button__blue button__search search">
+                <button type="submit" id="search" class="btn button-blue button-search search">
                     <i class="fa-solid fa-search"></i>
                 </button>
                 </div>
             </form>
 
-            <div class="navbar-nav cart__icon col-3 d-flex align-items-center justify-content-center">
-                <a href="https://www.farmacia701.com/Carrito" type="button" class="position-relative button__cart">
+            <div class="navbar-nav col-3 d-flex align-items-center justify-content-center">
+                <a href="https://www.farmacia701.com/Carrito" type="button" class="position-relative button-cart ">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-secondary">1</span>
                 </a>
@@ -87,10 +87,10 @@
     </header>
 
     <!-- Search -->
-    <section class="anuncio_collapse">
+    <section class="search-brand-collapse">
         <div class="sidebar">
             <p class="text-center h6 text-primary text-uppercase fw-bold">Prueba nuestro buscador</p>
-            <p class=" mx-4 text-secondary">Haz tu búsqueda por alfabeto, nombre o componente activo</p>
+            <p class="mx-4 text-secondary">Haz tu búsqueda por alfabeto, nombre o componente activo.</p>
         </div>
     </section>
 
@@ -123,7 +123,7 @@
 
     <!-- Zoom  -->
 
-    <section class="separador mt-5 container p-2 ml-2 mr-2">
+    <section class="zoom mt-5 container p-2 ml-2 mr-2">
         <div class="navbar">
             <div class="container d-flex justify-content-center align-self-center">
                 <div class="col-12 col-md-2 d-flex justify-content-center justify-content-md-end">
@@ -143,51 +143,26 @@
     </section>
 
     <!-- Ads -->
-
     <section id="ads" class="container mt-5">
         <div class="py-4">
-            <p class="h3 head__title">Lo recomendado</p>
+            <p class="h3 title-section">Lo recomendado</p>
         </div>
-        <div class="owl-carousel carousel__ads">
-            <div class="test"><img src="https://www.farmacia701.com/ads/Cooper%20Pharma%20Publicidad.png" alt=""></div>
-            <div class="test"><img src="https://www.farmacia701.com/ads/Cooper%20Pharma%20Publicidad.png" alt=""></div>
-            <div class="test"><img src="https://www.farmacia701.com/ads/Cooper%20Pharma%20Publicidad.png" alt=""></div>
-            <div class="test"><img src="https://www.farmacia701.com/ads/Cooper%20Pharma%20Publicidad.png" alt=""></div>
-            <div class="test"><img src="https://www.farmacia701.com/ads/Cooper%20Pharma%20Publicidad.png" alt=""></div>
+        <div class="owl-carousel carousel-ads">
+            <div class="item-ad-carousel"><img src="https://www.farmacia701.com/ads/Cooper%20Pharma%20Publicidad.png" alt=""></div>
+            <div class="item-ad-carousel"><img src="https://www.farmacia701.com/ads/Cooper%20Pharma%20Publicidad.png" alt=""></div>
+            <div class="item-ad-carousel"><img src="https://www.farmacia701.com/ads/Cooper%20Pharma%20Publicidad.png" alt=""></div>
+            <div class="item-ad-carousel"><img src="https://www.farmacia701.com/ads/Cooper%20Pharma%20Publicidad.png" alt=""></div>
+            <div class="item-ad-carousel"><img src="https://www.farmacia701.com/ads/Cooper%20Pharma%20Publicidad.png" alt=""></div>
         </div>
     </section>
 
     <!-- Products -->
 
-    <section id="products" class="container mt-2 mb-5">
-        <div class="py-4">
-            <p class="h3 head__title text-center">Productos</p>
 
-        </div>
-
-
-
-        <!-- Line -->
-        <div id="prueba" class="row justify-content-center product__container">
-
-
-        </div>
-
-
-        <!-- boton cargar mas -->
-        <div class="d-flex justify-content-center mt-3">
-            <button type="button" id="loading" class="btn btn-outline-primary col-4">Cargar más <i
-                    class="fa-solid fa-arrow-down"></i></button>
-        </div>
-
-    </section>
-
-
-    <a href="https://api.whatsapp.com/send?phone=51955081075&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." class="float" target="_blank">
-        <i class="fa-brands fa-whatsapp my-float"></i>
+    <!-- Whatsapp Floating Button -->
+    <a href="https://api.whatsapp.com/send?phone=584141850671&text=Hola,%20Farmacia%20701." class="float-whatsapp" target="_blank">
+        <i class="fa-brands fa-whatsapp icon-float-whatsapp"></i>
     </a>
-
-
 
 
     <footer class="bg-primary-color text-light pt-5 pb-3">
@@ -203,18 +178,20 @@
 
                     <div class="d-flex align-items-center justify-content-center gap-3">
                         <div>
-                            <i class="fa-brands fa-whatsapp"></i>
+                            <a href="https://api.whatsapp.com/send?phone=584141850671&text=Hola,%20Farmacia%20701." target="_blank" aria-label="Whatsapp Farmacia 701">
+                                <i class="fa-brands fa-whatsapp icon-footer"></i>
+                            </a>
                         </div>
                         <div>
-                            <i class="fa-brands fa-instagram"></i>
+                            <a href="https://www.instagram.com/farma701/" target="_blank" aria-label="Instagram Farmacia 701">
+                                <i class="fa-brands fa-instagram icon-footer"></i>
+                            </a>
                         </div>
                     </div>
 
 
                 </div>
 
-
-                <!-- Mapa de ubicación -->
                 <div class="col-md-6 mb-4">
                     <h5 class="text-uppercase">Nuestra ubicación</h5>
                     <div class="map-container" style="height: 250px; border-radius: 8px; overflow: hidden;">
@@ -238,10 +215,10 @@
     <script src="{{ asset('assets/OwlCarousel/owl.carousel.min.js') }}"></script>
 
     <script>
-        let anuncio = document.querySelector("body");
+        const body = document.querySelector("body");
 
-        anuncio.addEventListener("click", function() {
-            document.querySelector("body").classList.remove("anuncio");
+        body.addEventListener("click", function() {
+            document.querySelector("body").classList.remove("search-brand");
         })
 
         $(".owl-carousel").owlCarousel({

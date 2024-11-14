@@ -6,40 +6,40 @@
 }
 
 
-.button__blue {
+.button-blue {
     color: #fff !important;
     background-color: var(--color__primary) !important;
 }
 
-.input__search {
+.input-search {
     border-radius: 25px 0px 0px 0px !important;
     border: solid #0077cc 1px !important;
 }
 
 
-.button__search {
+.button-search {
     border-radius: 0px 0px 25px 0px !important;
     border: solid #0077cc 1px !important;
 }
 
-.button__search:hover {
+.button-search:hover {
     color: #fff !important;
     background-color: var(--color__primary) !important;
     border: solid #0077cc 3px !important;
 }
 
-.button__cart {
+.button-cart {
     font-size: 20px !important;
     text-decoration: none !important;
     color: var(--color__primary) !important;
 }
 
-.anuncio_collapse {
+.search-brand-collapse {
     font-size: 12px;
 }
 
 
-.anuncio_collapse .sidebar {
+.search-brand-collapse .sidebar {
     background: rgba(255, 255, 255, 0.978);
     position: fixed;
     top: 80px;
@@ -53,33 +53,16 @@
     box-shadow: 2px 2px 3px #0077cc;
 }
 
-body.anuncio .anuncio_collapse .sidebar {
+body.search-brand .search-brand-collapse .sidebar {
     left: 30px;
 }
 
-.delivery_gratis {
-    background: var(--color__fucsia);
-    position: fixed;
-    bottom: 80px;
-    right: -220px;
-    width: 220px;
-    height: 200px;
-    padding: 0px 0;
-    z-index: 2000;
-    border-radius: 100px 0px 100px 100px;
-}
-
-.oferta p {
-    margin: 0;
-}
-
-body.delivery .anuncio_collapse .delivery_gratis {
+body.search-brand-collapse {
     right: 30px;
 }
 
 
 #carousel {
-
     max-height: 350px;
 }
 
@@ -87,7 +70,7 @@ body.delivery .anuncio_collapse .delivery_gratis {
     border-radius: 150px 0px 150px 0px;
 }
 
-.separador {
+.zoom {
     margin-left: 5px;
     margin-right: 5px;
     border-radius: 10px 10px 10px 10px;
@@ -95,40 +78,39 @@ body.delivery .anuncio_collapse .delivery_gratis {
     background-color: #97def3;
 }
 
-.separador p {
+.zoom p {
     margin-bottom: 0;
     margin-right: 15px;
-
 }
 
-.separador span {
+.zoom span {
     margin-bottom: 0;
     margin-left: 5px;
 
 }
 
 
-.separador span img {
+.zoom span img {
     margin-right: 20px;
     margin-left: 20px;
 }
 
-.separador img {
+.zoom img {
     max-width: 90px;
 }
 
 
-.head__title {
+.title-section {
     border-bottom: #d6d7d7 solid 1px;
     font-weight: 600;
 }
 
-.carousel__ads img {
+.carousel-ads img {
     max-width: 180px;
     max-height: 180px;
 }
 
-.test img {
+.item-ad-carousel img {
     border-radius: 20px 0px 20px 0px;
     margin: 0;
 
@@ -138,7 +120,7 @@ body.delivery .anuncio_collapse .delivery_gratis {
     background-color: #0077cc !important;
 }
 
-.float{
+.float-whatsapp{
 	position:fixed;
 	width:60px;
 	height:60px;
@@ -153,6 +135,11 @@ body.delivery .anuncio_collapse .delivery_gratis {
     z-index:100;
 }
 
-.my-float{
+.icon-float-whatsapp{
 	margin-top:16px;
+}
+
+.icon-footer{
+    font-size: 24px !important;
+    color: #fff;
 }
