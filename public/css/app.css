@@ -1,0 +1,135 @@
+:root {
+    --color__primary: #0077cc;
+    --color__fucsia: #ff146edf;
+    --color__green: #6dc72e;
+    --color__orange: #ffa207;
+}
+
+
+.button__blue {
+    color: #fff !important;
+    background-color: var(--color__primary) !important;
+}
+
+.input__search {
+    border-radius: 25px 0px 0px 0px !important;
+    border: solid #0077cc 1px !important;
+}
+
+
+.button__search {
+    border-radius: 0px 0px 25px 0px !important;
+    border: solid #0077cc 1px !important;
+}
+
+.button__search:hover {
+    color: #fff !important;
+    background-color: var(--color__primary) !important;
+    border: solid #0077cc 3px !important;
+}
+
+.button__cart {
+    font-size: 20px !important;
+    text-decoration: none !important;
+    color: var(--color__primary) !important;
+}
+
+.anuncio_collapse {
+    font-size: 12px;
+}
+
+
+.anuncio_collapse .sidebar {
+    background: rgba(255, 255, 255, 0.978);
+    position: fixed;
+    top: 80px;
+    left: -300px;
+    width: 280px;
+    height: 100px;
+    padding: 20px 0;
+    z-index: 2000;
+    transition: all 0.5s ease;
+    border-radius: 30px 0px 30px 30px;
+    box-shadow: 2px 2px 3px #0077cc;
+}
+
+body.anuncio .anuncio_collapse .sidebar {
+    left: 30px;
+}
+
+.delivery_gratis {
+    background: var(--color__fucsia);
+    position: fixed;
+    bottom: 80px;
+    right: -220px;
+    width: 220px;
+    height: 200px;
+    padding: 0px 0;
+    z-index: 2000;
+    border-radius: 100px 0px 100px 100px;
+}
+
+.oferta p {
+    margin: 0;
+}
+
+body.delivery .anuncio_collapse .delivery_gratis {
+    right: 30px;
+}
+
+
+#carousel {
+
+    max-height: 350px;
+}
+
+.carousel-item img {
+    border-radius: 150px 0px 150px 0px;
+}
+
+.separador {
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 10px 10px 10px 10px;
+    color: rgb(5, 8, 110);
+    background-color: #97def3;
+}
+
+.separador p {
+    margin-bottom: 0;
+    margin-right: 15px;
+
+}
+
+.separador span {
+    margin-bottom: 0;
+    margin-left: 5px;
+
+}
+
+
+.separador span img {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.separador img {
+    max-width: 90px;
+}
+
+
+.head__title {
+    border-bottom: #d6d7d7 solid 1px;
+    font-weight: 600;
+}
+
+.carousel__ads img {
+    max-width: 180px;
+    max-height: 180px;
+}
+
+.test img {
+    border-radius: 20px 0px 20px 0px;
+    margin: 0;
+
+}
