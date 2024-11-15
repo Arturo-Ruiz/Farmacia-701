@@ -78,7 +78,7 @@
             </form>
 
             <div class="navbar-nav col-3 d-flex align-items-center justify-content-center">
-                <a href="https://www.farmacia701.com/Carrito" type="button" class="position-relative button-cart ">
+                <a href="https://www.farmacia701.com/Carrito" type="button" class="position-relative button-cart">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-secondary">1</span>
                 </a>
@@ -104,7 +104,7 @@
                     <img src="https://www.farmacia701.com/carousel/Carrusel%201.png" class="d-flex w-100 img-fluid"
                         alt="imagen de carrusel numero uno">
                 </div>
-                <div class="carousel-item active">
+                <div class="carousel-item">
                     <!--data-bs-interval="2000"-->
                     <img src="https://www.farmacia701.com/carousel/Carrusel%201.png" class="d-flex w-100 img-fluid"
                         alt="imagen de carrusel numero uno">
@@ -192,7 +192,7 @@
 
                 </div>
 
-                <div class="col-md-6 mb-4">
+                <div class="col-md-6 mb-4 d-flex flex-column justify-content-center ">
                     <h5 class="text-uppercase">Nuestra ubicación</h5>
                     <div class="map-container" style="height: 250px; border-radius: 8px; overflow: hidden;">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d246.8645807566945!2d-63.54489201416361!3d8.118450401078919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8dce87a89edf52dd%3A0xad68288781bd60fb!2sFarmacia%20701%2C%20C.A.!5e0!3m2!1sen!2sus!4v1731616867323!5m2!1sen!2sus" width="640" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
