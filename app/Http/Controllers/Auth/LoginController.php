@@ -22,8 +22,8 @@ class LoginController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        if(Auth::attempt($credentials)) {
-            
+        if (Auth::attempt($credentials)) {
+
             // Regenerate the session to prevent session fixation attacks
             $request->session()->regenerate();
 
@@ -48,5 +48,4 @@ class LoginController extends Controller
 
         return redirect('/');
     }
-
 }

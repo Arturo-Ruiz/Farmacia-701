@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\DashboardController;
+
 
 Route::get('/', function () {
     return view(view: 'welcome');
@@ -23,11 +25,10 @@ Route::middleware(['guest'])->group(function () {
 // Protected Routes
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/admin/dashboard', function () {
-        return 'Admin Dashboard';
-    })->name('admin.dashboard');
+    // Dashboard route
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
     
-
-
+    // Logout route
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
