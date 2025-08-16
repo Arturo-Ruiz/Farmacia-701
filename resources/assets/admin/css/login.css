@@ -24,3 +24,9 @@
 .input-wrapper .input-group .input-group-text {
     border: none;
 }
+
+.login-background-section {
+    background-image: url('../img/login-background.webp');
+    background-size: cover;
+    background-position: center;
+}

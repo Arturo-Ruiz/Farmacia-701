@@ -2,7 +2,7 @@
 
 @section('content')
 <main class="main-content mt-0">
-    <section class="min-vh-100 d-flex align-items-center justify-content-center" style="background-image: url('https://raw.githubusercontent.com/antoniosarosi/Wallpapers/refs/heads/master/63.jpg'); background-size: cover; background-position: center;">
+    <section class="min-vh-100 d-flex align-items-center login-background-section">
         <div class="animated-background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
         <span class="mask bg-gradient-dark opacity-6"></span>
 
@@ -12,7 +12,12 @@
                     <div class="card shadow-lg">
                         <div class="card-body p-4">
                             <div class="text-center mb-4">
-                                <h4 class="font-weight-bolder mt-3">¡Bienvenido!</h4>
+
+                                <div class="mb-3">
+                                    <img src="{{ asset('img/logo.png') }}" alt="Logo de la Farmacia 701" style="max-height: 80px;">
+                                </div>
+
+                                <h4 class="font-weight-bolder">¡Bienvenido!</h4>
                                 <p class="mb-0">Ingresa tus credenciales para continuar.</p>
                             </div>
 
@@ -21,7 +26,6 @@
                                 <div class="input-wrapper mb-3">
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                        {{-- ✅ CAMBIO AQUÍ --}}
                                         <input type="email" name="email" class="form-control form-control-lg @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}" required autocomplete="email">
                                     </div>
                                 </div>
@@ -32,7 +36,6 @@
                                 <div class="input-wrapper mb-3">
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                        {{-- ✅ CAMBIO AQUÍ --}}
                                         <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Contraseña" required autocomplete="current-password">
                                         <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
                                             <i class="fas fa-eye"></i>
