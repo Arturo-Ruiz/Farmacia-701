@@ -1,16 +1,25 @@
-import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from "vite";
+import laravel from "laravel-vite-plugin";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/css/app.css',
-                'resources/js/app.js',
+                "resources/css/app.css",
+                "resources/js/app.js",
 
-                'resources/assets/admin/css/app.min.css',
-                'resources/assets/admin/css/login.css',
+                "resources/assets/admin/css/app.min.css",
+                "resources/assets/admin/css/login.css",
+
+                "resources/assets/admin/js/core/popper.min.js",
+                "resources/assets/admin/js/core/bootstrap.min.js",
+                "resources/assets/admin/js/plugins/perfect-scrollbar.min.js",
+                "resources/assets/admin/js/plugins/smooth-scrollbar.min.js",
+                "resources/assets/admin/js/plugins/chartjs.min.js",
+
+                "resources/assets/admin/js/app.min.js",
+                "resources/assets/admin/js/dashboard.js",                
             ],
             refresh: true,
         }),
