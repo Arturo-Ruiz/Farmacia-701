@@ -18,21 +18,21 @@
 
                                 <form role="form" method="POST" action="{{ route('login') }}">
                                     @csrf
-                                    <div class="mb-3">
+                                    <div class="input-wrapper mb-3">
                                         <div class="input-group input-group-merge">
                                             <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                             <input type="email" name="email" class="form-control form-control-lg @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}" required>
-                                            @error('email')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
                                         </div>
                                     </div>
+                                    @error('email')
+                                    <div class="text-danger text-xs mt-n2 mb-2">{{ $message }}</div>
+                                    @enderror
 
-                                    <div class="mb-3">
+                                    <div class="input-wrapper mb-3">
                                         <div class="input-group input-group-merge">
                                             <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                             <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Contraseña" required>
-                                            <span class="input-group-text" id="togglePassword">
+                                            <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
                                                 <i class="fas fa-eye"></i>
                                             </span>
                                         </div>

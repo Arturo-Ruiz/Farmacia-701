@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/js/app.js',
 
                 'resources/assets/admin/css/app.min.css',
+                'resources/assets/admin/css/login.css',
             ],
             refresh: true,
         }),
