@@ -1,5 +1,7 @@
 @extends('layouts.guest')
 
+@section('title', 'Iniciar Sesión')
+
 @section('content')
 <main class="main-content mt-0">
     <section class="min-vh-100 d-flex align-items-center login-background-section">
