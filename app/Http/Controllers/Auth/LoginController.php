@@ -28,7 +28,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             // Authentication passed, redirect to intended page
-            return redirect()->intended('admin.dashboard');
+            return redirect()->intended(route('admin.dashboard'));
         }
 
         return back()->withErrors([
