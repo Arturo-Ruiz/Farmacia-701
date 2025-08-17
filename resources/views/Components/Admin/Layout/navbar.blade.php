@@ -1,20 +1,15 @@
 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="false">
     <div class="container-fluid py-1 px-3">
-        
-        {{-- Título de la página actual (breadcrumb simplificado) --}}
         <nav aria-label="breadcrumb">
-            <h6 class="font-weight-bolder text-white mb-0">@yield('title', 'Página')</h6>
+            <h6 class="font-weight-bolder text-white mb-0">@yield('title', 'Name of page')</h6>
         </nav>
 
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-            {{-- El ms-md-auto empuja los elementos a la derecha --}}
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                {{-- Aquí no hay nada, el buscador fue eliminado --}}
             </div>
             
             <ul class="navbar-nav justify-content-end">
                 
-                {{-- Menú desplegable del Usuario --}}
                 <li class="nav-item dropdown pe-2 d-flex align-items-center">
                     <a href="#" class="nav-link text-white font-weight-bold px-0" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-user me-sm-1"></i>
@@ -22,7 +17,6 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="userDropdown">
                         <li>
-                            {{-- Formulario para Cerrar Sesión de forma segura --}}
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="dropdown-item border-radius-md">
@@ -35,7 +29,6 @@
                     </ul>
                 </li>
 
-                {{-- Icono de Menú Hamburguesa para responsive --}}
                 <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
                         <div class="sidenav-toggler-inner">
