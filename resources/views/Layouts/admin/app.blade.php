@@ -37,6 +37,12 @@
         <x-admin.layout.navbar />
 
         <div class="container-fluid py-4">
+
+            @if (session('success'))
+            <div class="alert alert-success text-white">
+                {{ session('success') }}
+            </div>
+            @endif
             @yield('content')
 
             <footer class="footer pt-3  ">
@@ -78,7 +84,7 @@
 
     <script>
 
-   
+
     </script>
 
     <script async defer src="https://buttons.github.io/buttons.js"></script>
