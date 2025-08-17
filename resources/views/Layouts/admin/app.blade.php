@@ -39,7 +39,7 @@
         <div class="container-fluid py-4">
 
             @if (session('success'))
-            <div class="alert alert-success text-white">
+            <div class="alert alert-success text-white" role="alert">
                 {{ session('success') }}
             </div>
             @endif
@@ -54,8 +54,8 @@
                                     document.write(new Date().getFullYear())
                                 </script>,
                                 made with <i class="fa fa-heart"></i> by
-                                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                                for a better web.
+                                <a href="https://github.com/Arturo-Ruiz" class="font-weight-bold" target="_blank">Arturo Ruiz</a>
+                                for Farmacia 701.
                             </div>
                         </div>
                         <div class="col-lg-6">
