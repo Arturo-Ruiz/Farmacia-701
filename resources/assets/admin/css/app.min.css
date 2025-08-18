@@ -27834,5 +27834,33 @@ screen and (-ms-high-contrast:active) {
 }
 
 .text-bold {
-    font-weight: bold !important; 
+    font-weight: bold !important;
+}
+
+.input-wrapper {
+    border: 1px solid #d2d6da !important;
+    border-radius: 0.5rem !important;
+    transition: all 0.2s ease-in-out !important;
+    background-color: white !important;
+    display: flex !important;
+}
+
+.input-wrapper:focus-within {
+    border-color: #5E72E4 !important;
+    box-shadow: 0 0 0 3px rgba(94, 114, 228, 0.25) !important;
+}
+
+.input-wrapper .input-group {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.input-wrapper .input-group .form-control,
+.input-wrapper .input-group .input-group-text {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.input-wrapper .input-group .form-control:focus {
+    box-shadow: none !important;
 }

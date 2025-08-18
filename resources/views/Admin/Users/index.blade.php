@@ -32,34 +32,42 @@
                     <input type="hidden" id="userId">
                     <div class="mb-3">
                         <label for="name" class="form-label text-modal">Nombre</label>
-                        <div class="input-group input-group-merge">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            <input type="text" class="form-control" name="name" id="name" autocomplete="name">
+                        <div class="input-wrapper">
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" class="form-control" name="name" id="name" autocomplete="name">
+                            </div>
                         </div>
-                        <div class="text-danger text-xs mt-1" id="name_error"></div>
+                        <div class="text-danger text-sm mt-1" id="name_error"></div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label text-modal">Email</label>
-                        <div class="input-group input-group-merge">
-                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                            <input type="email" class="form-control" name="email" id="email" autocomplete="email">
+                        <div class="input-wrapper">
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input type="email" class="form-control" name="email" id="email" autocomplete="email">
+                            </div>
                         </div>
-                        <div class="text-danger text-xs mt-1" id="email_error"></div>
+                        <div class="text-danger text-sm mt-1" id="email_error"></div>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label text-modal">Contraseña</label>
-                        <div class="input-group input-group-merge">
-                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                            <input type="password" class="form-control" name="password" id="password" autocomplete="new-password">
+                        <div class="input-wrapper">
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" name="password" id="password" autocomplete="new-password">
+                            </div>
                         </div>
                         <small class="form-text text-muted d-none" id="password_help">Solo si deseas cambiar la contraseña.</small>
-                        <div class="text-danger text-xs mt-1" id="password_error"></div>
+                        <div class="text-danger text-sm mt-1" id="password_error"></div>
                     </div>
                     <div class="mb-3">
                         <label for="password_confirmation" class="form-label text-modal">Confirmar Contraseña</label>
-                        <div class="input-group input-group-merge">
-                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                            <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" autocomplete="new-password">
+                        <div class="input-wrapper">
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" autocomplete="new-password">
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -91,10 +99,15 @@
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 3000,
+            timer: 2000,
             timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
         });
 
+        
         const resetForm = () => {
             userForm.reset();
             document.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
@@ -155,7 +168,7 @@
                 const result = await response.json();
 
                 if (!response.ok) {
-                    if (response.status === 422) { 
+                    if (response.status === 422) {
                         document.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
                         Object.keys(result.errors).forEach(key => {
                             document.getElementById(`${key}_error`).textContent = result.errors[key][0];
@@ -171,7 +184,7 @@
                     title: result.message
                 });
 
-              
+
                 if (isEditing && currentUserId == loggedInUserId) {
                     document.getElementById('navbar-user-name').textContent = formData.name;
                 }
@@ -183,13 +196,14 @@
 
 
         const deleteUser = async (userId) => {
-            if (userId == loggedInUserId) {
+
+            if (userId === loggedInUserId) {
                 Swal.fire('Acción no permitida', 'No puedes eliminar tu propio usuario.', 'error');
                 return;
             }
 
             const result = await Swal.fire({
-                title: '¿Estás seguro?',
+                title: '¿Estás seguro de eliminar este usuario?',
                 text: "¡No podrás revertir esta acción!",
                 icon: 'warning',
                 showCancelButton: true,
