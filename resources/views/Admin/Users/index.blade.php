@@ -56,6 +56,9 @@
                             <div class="input-group input-group-merge">
                                 <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                 <input type="password" class="form-control" name="password" id="password" autocomplete="new-password">
+                                <span class="input-group-text password-toggle" style="cursor: pointer;">
+                                    <i class="fas fa-eye"></i>
+                                </span>
                             </div>
                         </div>
                         <small class="form-text text-muted d-none" id="password_help">Solo si deseas cambiar la contraseña.</small>
@@ -67,6 +70,9 @@
                             <div class="input-group input-group-merge">
                                 <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                 <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" autocomplete="new-password">
+                                <span class="input-group-text password-toggle" style="cursor: pointer;">
+                                    <i class="fas fa-eye"></i>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -87,11 +93,15 @@
 <script type="module">
     document.addEventListener('DOMContentLoaded', function() {
 
-        const userModal = new bootstrap.Modal(document.getElementById('userModal'));
+        const userModal = new bootstrap.Modal(document.getElementById('userModal'))
+        const userForm = document.getElementById('userForm');
+        const userModalEl = document.getElementById('userModal');;
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         const loggedInUserId = document.body.dataset.userId;
         const modalTitle = document.getElementById('modalTitle');
-        const userForm = document.getElementById('userForm');
+
+        const passwordToggles = document.querySelectorAll('.password-toggle');
+
         let isEditing = false;
         let currentUserId = null;
 
@@ -107,7 +117,7 @@
             }
         });
 
-        
+
         const resetForm = () => {
             userForm.reset();
             document.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
@@ -121,6 +131,8 @@
             document.getElementById('password_help').classList.add('d-none');
             userModal.show();
         };
+
+
 
         const openModalForEdit = async (userId) => {
             resetForm();
@@ -207,8 +219,8 @@
                 text: "¡No podrás revertir esta acción!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
+                confirmButtonColor: '#5e72e4',
+                cancelButtonColor: '#f5365c',
                 confirmButtonText: 'Sí, ¡eliminar!',
                 cancelButtonText: 'Cancelar'
             });
@@ -238,8 +250,30 @@
             }
         };
 
+        passwordToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const passwordInput = this.parentElement.querySelector('input');
+                const icon = this.querySelector('i');
+
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+        });
+
+
         document.getElementById('createUserBtn').addEventListener('click', openModalForCreate);
         document.getElementById('saveUserBtn').addEventListener('click', saveUser);
+
+        userModalEl.addEventListener('hidden.bs.modal', event => {
+            document.body.focus();
+        });
 
         $('#users-table').on('click', '.edit-btn', function() {
             openModalForEdit($(this).data('id'));
@@ -253,6 +287,7 @@
             const deleteButton = document.querySelector(`.delete-btn[data-id="${loggedInUserId}"]`);
             if (deleteButton) {
                 deleteButton.disabled = true;
+                deleteButton.classList.add('disabled');
                 deleteButton.classList.add('text-white');
             }
         });
