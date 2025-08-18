@@ -18,6 +18,8 @@
 
     <meta name="robots" content="noindex, nofollow">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Nucleo Icons -->
     <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-icons.css" rel="stylesheet" />
@@ -26,9 +28,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     @vite(['resources/assets/admin/css/app.min.css'])
+
+    <style>
+        .div.dt-container div.dt-length select {
+            width: 100px;
+        }
+    </style>
 </head>
 
-<body class="g-sidenav-show">
+<body class="g-sidenav-show" data-user-id="{{ Auth::id() }}">
     <div class="min-height-300 bg-primary position-absolute w-100"></div>
 
     <x-admin.layout.sidebar />
@@ -43,6 +51,7 @@
                 {{ session('success') }}
             </div>
             @endif
+
             @yield('content')
 
             <footer class="footer pt-3  ">
@@ -80,7 +89,7 @@
         </div>
     </main>
 
-    @vite(['resources/assets/admin/js/core/popper.min.js', 'resources/assets/admin/js/core/bootstrap.min.js', 'resources/assets/admin/js/plugins/perfect-scrollbar.min.js', 'resources/assets/admin/js/plugins/smooth-scrollbar.min.js', 'resources/assets/admin/js/plugins/chartjs.min.js', 'resources/assets/admin/js/dashboard.js'])
+    @vite(['resources/js/app.js','resources/assets/admin/js/core/popper.min.js', 'resources/assets/admin/js/core/bootstrap.min.js', 'resources/assets/admin/js/plugins/perfect-scrollbar.min.js', 'resources/assets/admin/js/plugins/smooth-scrollbar.min.js', 'resources/assets/admin/js/plugins/chartjs.min.js', 'resources/assets/admin/js/dashboard.js'])
 
     <script>
 
@@ -90,6 +99,8 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     @vite(['resources/assets/admin/js/app.min.js'])
+
+    @stack('scripts')
 </body>
 
 </html>

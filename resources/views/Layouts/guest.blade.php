@@ -30,5 +30,3 @@
 
     @vite(['resources/assets/admin/js/auth.js'])
 </html>
-
-html

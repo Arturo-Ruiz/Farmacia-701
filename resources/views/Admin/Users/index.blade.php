@@ -3,60 +3,245 @@
 @section('title', 'Usuarios')
 
 @section('content')
+
 <div class="card">
     <div class="card-header pb-0">
-        <div class="d-flex justify-content-between align-items-center">
-            <h6 class="mb-0">Usuarios Registrados</h6>
-            <a href="{{ route('admin.users.create') }}" class="btn btn-primary">
+        <div class="container-fluid d-flex justify-content-between align-items-center mt-2">
+            <h5 class="text-header m-0">Usuarios Registrados</h5>
+            <button id="createUserBtn" class="btn btn-primary btn-md m-0">
                 Crear Nuevo Usuario
-            </a>
+            </button>
         </div>
     </div>
-    <div class="card-body px-0 pt-0 pb-2">
-        <div class="table-responsive p-0">
-            <table class="table align-items-center mb-0">
-                <thead>
-                    <tr>
-                        <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7">ID</th>
-                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">Nombre</th>
-                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">Email</th>
-                        <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($users as $user)
-                    <tr class="align-middle">
-                        <td>
-                            <p class="text-sm font-weight-bold mb-0 px-3">{{ $user->id }}</p>
-                        </td>
-                        <td>
-                            <p class="text-sm font-weight-normal mb-0">{{ $user->name }}</p>
-                        </td>
-                        <td>
-                            <p class="text-sm text-secondary mb-0">{{ $user->email }}</p>
-                        </td>
-                        <td class="text-center">
-                            <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-warning mb-0 mr-2">Editar</a>
-                            <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger mb-0" onclick="return confirm('¿Estás seguro?')">Eliminar</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @empty
-                    <tr>
-                        <td colspan="4" class="text-center py-5">
-                            <p class="text-secondary">No hay usuarios registrados.</p>
-                        </td>
-                    </tr>
-                    @endforelse
-                </tbody>
-            </table>
+    <div class="card-body">
+        <div class="table-responsive p-0 mt-2">
+            {!! $dataTable->table() !!}
         </div>
     </div>
-    <div class="card-footer px-4 d-flex justify-content-end">
-        {{ $users->links() }}
+</div>
+
+<div class="modal fade" id="userModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title text-bold" id="modalTitle"></h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="userForm">
+                    <input type="hidden" id="userId">
+                    <div class="mb-3">
+                        <label for="name" class="form-label text-modal">Nombre</label>
+                        <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input type="text" class="form-control" name="name" id="name" autocomplete="name">
+                        </div>
+                        <div class="text-danger text-xs mt-1" id="name_error"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label text-modal">Email</label>
+                        <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            <input type="email" class="form-control" name="email" id="email" autocomplete="email">
+                        </div>
+                        <div class="text-danger text-xs mt-1" id="email_error"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label text-modal">Contraseña</label>
+                        <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            <input type="password" class="form-control" name="password" id="password" autocomplete="new-password">
+                        </div>
+                        <small class="form-text text-muted d-none" id="password_help">Solo si deseas cambiar la contraseña.</small>
+                        <div class="text-danger text-xs mt-1" id="password_error"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password_confirmation" class="form-label text-modal">Confirmar Contraseña</label>
+                        <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" autocomplete="new-password">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" id="saveUserBtn" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
+
+@push('scripts')
+{!! $dataTable->scripts(attributes: ['type' => 'module']) !!}
+
+<script type="module">
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const userModal = new bootstrap.Modal(document.getElementById('userModal'));
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        const loggedInUserId = document.body.dataset.userId;
+        const modalTitle = document.getElementById('modalTitle');
+        const userForm = document.getElementById('userForm');
+        let isEditing = false;
+        let currentUserId = null;
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+        });
+
+        const resetForm = () => {
+            userForm.reset();
+            document.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
+            currentUserId = null;
+        };
+
+        const openModalForCreate = () => {
+            resetForm();
+            isEditing = false;
+            modalTitle.textContent = 'Crear Nuevo Usuario';
+            document.getElementById('password_help').classList.add('d-none');
+            userModal.show();
+        };
+
+        const openModalForEdit = async (userId) => {
+            resetForm();
+            isEditing = true;
+            currentUserId = userId;
+
+            try {
+                const response = await fetch(`/admin/users/${userId}`);
+                if (!response.ok) throw new Error('Usuario no encontrado');
+                const user = await response.json();
+
+                modalTitle.textContent = 'Editar Usuario';
+                document.getElementById('password_help').classList.remove('d-none');
+                document.getElementById('name').value = user.name;
+                document.getElementById('email').value = user.email;
+
+                userModal.show();
+            } catch (error) {
+                console.error('Error al cargar datos:', error);
+            }
+        };
+
+        const saveUser = async () => {
+            const url = isEditing ? `/admin/users/${currentUserId}` : '/admin/users';
+            const method = isEditing ? 'PUT' : 'POST';
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                password_confirmation: document.getElementById('password_confirmation').value,
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                        'Accept': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    if (response.status === 422) { 
+                        document.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
+                        Object.keys(result.errors).forEach(key => {
+                            document.getElementById(`${key}_error`).textContent = result.errors[key][0];
+                        });
+                    }
+                    return;
+                }
+
+                userModal.hide();
+                window.LaravelDataTables['users-table'].ajax.reload();
+                Toast.fire({
+                    icon: 'success',
+                    title: result.message
+                });
+
+              
+                if (isEditing && currentUserId == loggedInUserId) {
+                    document.getElementById('navbar-user-name').textContent = formData.name;
+                }
+
+            } catch (error) {
+                console.error('Error al guardar:', error);
+            }
+        };
+
+
+        const deleteUser = async (userId) => {
+            if (userId == loggedInUserId) {
+                Swal.fire('Acción no permitida', 'No puedes eliminar tu propio usuario.', 'error');
+                return;
+            }
+
+            const result = await Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¡No podrás revertir esta acción!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, ¡eliminar!',
+                cancelButtonText: 'Cancelar'
+            });
+
+            if (result.isConfirmed) {
+                try {
+                    const response = await fetch(`/admin/users/${userId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken,
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    const data = await response.json();
+                    if (!response.ok) throw new Error(data.message || 'Error al eliminar.');
+
+                    window.LaravelDataTables['users-table'].ajax.reload();
+                    Toast.fire({
+                        icon: 'success',
+                        title: data.message
+                    });
+                } catch (error) {
+                    console.error('Error al eliminar:', error);
+                    Swal.fire('Error', 'No se pudo eliminar el usuario.', 'error');
+                }
+            }
+        };
+
+        document.getElementById('createUserBtn').addEventListener('click', openModalForCreate);
+        document.getElementById('saveUserBtn').addEventListener('click', saveUser);
+
+        $('#users-table').on('click', '.edit-btn', function() {
+            openModalForEdit($(this).data('id'));
+        });
+
+        $('#users-table').on('click', '.delete-btn', function() {
+            deleteUser($(this).data('id'));
+        });
+
+        $('#users-table').on('draw.dt', function() {
+            const deleteButton = document.querySelector(`.delete-btn[data-id="${loggedInUserId}"]`);
+            if (deleteButton) {
+                deleteButton.disabled = true;
+                deleteButton.classList.add('text-white');
+            }
+        });
+    });
+</script>
+@endpush

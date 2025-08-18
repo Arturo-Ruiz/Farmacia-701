@@ -13,7 +13,7 @@
                 <li class="nav-item dropdown pe-2 d-flex align-items-center">
                     <a href="#" class="nav-link text-white font-weight-bold px-0" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-user me-sm-1"></i>
-                        <span class="d-sm-inline d-none">{{ Auth::user()->name ?? 'Usuario' }}</span>
+                        <span id="navbar-user-name" class="d-sm-inline d-none">{{ Auth::user()->name }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="userDropdown">
                         <li>
