@@ -1,7 +1,7 @@
 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="false">
-    <div class="container-fluid py-1 px-3">
+    <div class="container-fluid py-1 px-3 mt-4">
         <nav aria-label="breadcrumb">
-            <h6 class="font-weight-bolder text-white mb-0">@yield('title', 'Name of page')</h6>
+            <h5 class="font-weight-bolder text-white mb-0">@yield('title', 'Name of page')</h5>
         </nav>
 
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
