@@ -20,7 +20,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="userModal" tabindex="-1">
+<div class="modal fade" id="userModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -104,7 +104,6 @@
 
         let isEditing = false;
         let currentUserId = null;
-
 
         const Toast = Swal.mixin({
             toast: true,
