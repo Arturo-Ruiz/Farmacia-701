@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\CategoryController;
 
 
 Route::get('/', function () {
@@ -30,6 +31,9 @@ Route::middleware(['auth'])->group(function () {
 
     // User management routes
     Route::resource('/admin/users', UserController::class)->names('admin.users');
+
+    // Category management routes
+    Route::resource('/admin/categories', CategoryController::class)->names('admin.categories');
 
 
     // Logout route

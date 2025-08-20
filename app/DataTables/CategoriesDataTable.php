@@ -2,28 +2,28 @@
 
 namespace App\DataTables;
 
-use App\Models\User;
+use App\Models\Category;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\Html\Column;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\EloquentDataTable;
 
-class UserDataTable extends DataTable
+class CategoriesDataTable extends DataTable
 {
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', function (User $user) {
+            ->addColumn('action', function (Category $category) {
                 return '
-                    <button class="btn btn-success edit-btn mt-3" data-id="' . $user->id . '">Editar</button>
-                    <button class="btn btn-danger delete-btn mt-3" data-id="' . $user->id . '">Eliminar</button>
+                    <button class="btn btn-success edit-btn mt-3" data-id="' . $category->id . '">Editar</button>  
+                    <button class="btn btn-danger delete-btn mt-3" data-id="' . $category->id . '">Eliminar</button>
                 ';
             })
             ->setRowId('id');
     }
 
-    public function query(User $model): QueryBuilder
+    public function query(Category $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -31,7 +31,7 @@ class UserDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('users-table')
+            ->setTableId('categories-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->orderBy(0, 'desc')
@@ -53,12 +53,11 @@ class UserDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
+            Column::make('id')->title('ID'),
             Column::make('name')->title('Nombre'),
-            Column::make(data: 'email'),
             Column::computed('action')
                 ->title('')
-                ->exportable(false)
+                ->exportable(true)
                 ->printable(false)
                 ->width(150)
                 ->addClass('text-center'),
