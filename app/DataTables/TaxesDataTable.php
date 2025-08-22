@@ -57,7 +57,7 @@ class TaxesDataTable extends DataTable
         return [
             Column::make('id')->title('ID'),
             Column::make('name')->title('Nombre'),
-            Column::make('value')->title('Valor')->render('function() { return this.value.toFixed(2); }'),
+            Column::make('value')->title('Valor'),
             Column::computed('action')
                 ->title('')
                 ->exportable(true)

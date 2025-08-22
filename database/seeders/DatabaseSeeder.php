@@ -18,5 +18,8 @@ class DatabaseSeeder extends Seeder
 
         // Call the CategorySeeder to seed the categories table
         $this->call(CategorySeeder::class);
+
+        // Call the TaxSeeder to seed the taxes table
+        $this->call(TaxSeeder::class);
     }
 }
