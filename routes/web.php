@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\TaxController;
+
 
 
 Route::get('/', function () {
@@ -35,6 +37,10 @@ Route::middleware(['auth'])->group(function () {
     // Category management routes
     Route::resource('/admin/categories', CategoryController::class)->names('admin.categories');
 
+    // Tax management routes
+    Route::resource('/admin/taxes', TaxController::class)->names('admin.taxes');
+
+    
 
     // Logout route
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
