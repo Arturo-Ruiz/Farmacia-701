@@ -22,6 +22,7 @@ export default defineConfig({
                 "resources/assets/admin/js/app.min.js",
                 "resources/assets/admin/js/dashboard.js", 
                 "resources/assets/admin/js/sidenav.js",
+
             ],
             refresh: true,
         }),

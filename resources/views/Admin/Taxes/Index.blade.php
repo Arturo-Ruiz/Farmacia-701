@@ -45,7 +45,7 @@
                         <div class="input-wrapper">
                             <div class="input-group input-group-merge">
                                 <span class="input-group-text"><i class="fas fa-percentage"></i></span>
-                                <input type="number" step="0.01" class="form-control" name="value" id="value" autocomplete="value">
+                                <input type="text" step="0.01" class="form-control" name="value" id="value" autocomplete="value">
                             </div>
                         </div>
                         <div class="text-danger text-sm mt-1" id="value_error"></div>
@@ -65,8 +65,14 @@
 @push('scripts')
 {!! $dataTable->scripts() !!}
 
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+
+        $('#value').mask('000.000.000.000.00', {
+            reverse: true
+        });
+
         const taxModal = new bootstrap.Modal(document.getElementById('taxModal'));
         const taxModalEl = document.getElementById('taxModal');
         const taxForm = document.getElementById('taxForm');

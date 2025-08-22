@@ -6,6 +6,7 @@ window.$ = jquery;
 import "datatables.net-bs5";
 import "datatables.net-bs5/css/dataTables.bootstrap5.css";
 
+import "jquery-mask-plugin";
 
 import "sweetalert2/dist/sweetalert2.min.css";
 import Swal from 'sweetalert2';
