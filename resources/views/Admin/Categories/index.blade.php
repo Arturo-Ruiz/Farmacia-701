@@ -9,7 +9,7 @@
         <div class="container-fluid d-flex justify-content-between align-items-center mt-2">
             <h5 class="text-header m-0">Categorías Registradas</h5>
             <button id="createCategoryBtn" class="btn btn-primary btn-md m-0">
-                Crear Nueva Categoría
+                <i class="fa-solid fa-plus"></i> Crear Nueva Categoría
             </button>
         </div>
     </div>

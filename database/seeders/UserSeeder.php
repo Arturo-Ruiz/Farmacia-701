@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        user::create([
+        User::create([
             'name' => 'Admin',
             'email' => 'arturo@admin.com',
             'password' => bcrypt('password'), // Ensure to hash the password

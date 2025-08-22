@@ -15,5 +15,8 @@ class DatabaseSeeder extends Seeder
     {
         // Call the UserSeeder to seed the users table
         $this->call(UserSeeder::class);
+
+        // Call the CategorySeeder to seed the categories table
+        $this->call(CategorySeeder::class);
     }
 }
