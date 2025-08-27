@@ -9,6 +9,7 @@
         <div class="container-fluid d-flex justify-content-between align-items-center mt-2">
             <h5 class="text-header m-0">Impuestos Registrados</h5>
             <button id="createTaxBtn" class="btn btn-primary btn-md m-0">
+                <i class="fa-solid fa-plus"></i>
                 Crear Nuevo Impuesto
             </button>
         </div>

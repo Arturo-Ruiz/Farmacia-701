@@ -16,8 +16,8 @@ class TaxesDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function (Tax $tax) {
                 return '
-                    <button class="btn btn-success edit-btn mt-3" data-id="' . $tax->id . '">Editar</button>  
-                    <button class="btn btn-danger delete-btn mt-3" data-id="' . $tax->id . '">Eliminar</button>
+                    <button class="btn btn-success edit-btn mt-3" data-id="' . $tax->id . '"> <i class="fa-solid fa-pencil mr-2"></i> Editar</button>  
+                    <button class="btn btn-danger delete-btn mt-3" data-id="' . $tax->id . '"> <i class="fa-solid fa-trash mr-2"></i> Eliminar</button>
                 ';
             })
             ->setRowId('id');
