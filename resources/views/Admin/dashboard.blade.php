@@ -381,3 +381,8 @@
 </div>
 
 @endsection
+
+
+@push('scripts')
+    @vite(['resources/assets/admin/js/dashboard.js'])
+@endpush
