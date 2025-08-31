@@ -9,5 +9,7 @@ class DayRate extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['value'];
+    protected $fillable = [
+        'value'
+    ];
 }
