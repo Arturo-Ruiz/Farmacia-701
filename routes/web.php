@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TaxController;
+use App\Http\Controllers\Admin\DayRateController;
 
 
 
@@ -40,7 +41,12 @@ Route::middleware(['auth'])->group(function () {
     // Tax management routes
     Route::resource('/admin/taxes', TaxController::class)->names('admin.taxes');
 
-    
+    //Day Rates management routes
+    Route::resource('/admin/day-rates', DayRateController::class)
+        ->only(methods: ['index', 'show', 'update'])
+        ->names(names: 'admin.day-rates');
+
+
 
     // Logout route
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');

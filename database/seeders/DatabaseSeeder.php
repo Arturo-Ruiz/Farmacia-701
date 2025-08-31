@@ -21,5 +21,8 @@ class DatabaseSeeder extends Seeder
 
         // Call the TaxSeeder to seed the taxes table
         $this->call(TaxSeeder::class);
+
+        //Call the DayRateSeeder to seed the day_rates table
+        $this->call(DayRateSeeder::class);
     }
 }
