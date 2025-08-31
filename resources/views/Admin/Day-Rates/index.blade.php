@@ -56,6 +56,11 @@
 <script type="module">
     document.addEventListener('DOMContentLoaded', function() {
 
+        $('#value').mask('00.00', {
+            reverse: true
+        });
+
+
         const dayRateModal = new bootstrap.Modal(document.getElementById('dayRateModal'))
         const dayRateForm = document.getElementById('dayRateForm');
         const dayRateModalEl = document.getElementById('dayRateModal');
@@ -140,6 +145,13 @@
         };
 
         document.getElementById('saveDayRateBtn').addEventListener('click', saveDayRate);
+
+        dayRateModalEl.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                saveDayRate();
+            }
+        });
 
         dayRateModalEl.addEventListener('hidden.bs.modal', event => {
             document.body.focus();
