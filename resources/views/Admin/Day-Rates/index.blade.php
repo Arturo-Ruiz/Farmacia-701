@@ -27,16 +27,7 @@
             <div class="modal-body">
                 <form id="dayRateForm">
                     <input type="hidden" id="dayRateId">
-                    <div class="mb-3">
-                        <label for="name" class="form-label text-modal">Nombre</label>
-                        <div class="input-wrapper">
-                            <div class="input-group input-group-merge">
-                                <span class="input-group-text"><i class="fas fa-tag"></i></span>
-                                <input type="text" class="form-control" name="name" id="name" autocomplete="off" readonly>
-                            </div>
-                        </div>
-                        <div class="text-danger text-sm mt-1" id="name_error"></div>
-                    </div>
+
                     <div class="mb-3">
                         <label for="value" class="form-label text-modal">Valor</label>
                         <div class="input-wrapper">
@@ -100,7 +91,6 @@
                 const dayRate = await response.json();
 
                 document.getElementById('dayRateId').value = dayRate.id;
-                document.getElementById('name').value = dayRate.name;
                 document.getElementById('value').value = dayRate.value;
 
                 dayRateModal.show();
