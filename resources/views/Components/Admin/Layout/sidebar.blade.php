@@ -26,6 +26,14 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('admin.day-rates.*') ? 'active' : '' }}" href="{{ route('admin.day-rates.index') }}">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-chart-line text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Tasa del Día</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-tags text-dark text-sm opacity-10"></i>
@@ -33,7 +41,7 @@
                     <span class="nav-link-text ms-1">Categorías</span>
                 </a>
             </li>
-             <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.taxes.*') ? 'active' : '' }}" href="{{ route('admin.taxes.index') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-file-invoice-dollar text-dark text-sm opacity-10"></i>
