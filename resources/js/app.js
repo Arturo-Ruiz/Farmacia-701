@@ -4,7 +4,7 @@ import jquery from "jquery";
 window.$ = jquery;
 
 import "datatables.net-bs5";
-import "datatables.net-bs5/css/dataTables.bootstrap5.css";
+import "../css/datatables.css";
 
 import "jquery-mask-plugin";
 
