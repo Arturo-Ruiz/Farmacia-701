@@ -272,6 +272,13 @@
         document.getElementById('createUserBtn').addEventListener('click', openModalForCreate);
         document.getElementById('saveUserBtn').addEventListener('click', saveUser);
 
+        userModalEl.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                saveUser();
+            }
+        });
+
         userModalEl.addEventListener('hidden.bs.modal', event => {
             document.body.focus();
         });

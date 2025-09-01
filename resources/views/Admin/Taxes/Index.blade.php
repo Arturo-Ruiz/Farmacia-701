@@ -206,6 +206,13 @@
         document.getElementById('createTaxBtn').addEventListener('click', openModalForCreate);
         document.getElementById('saveTaxBtn').addEventListener('click', saveTax);
 
+        taxModalEl.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                saveTax();
+            }
+        });
+
         taxModalEl.addEventListener('hidden.bs.modal', event => {
             document.body.focus();
         });

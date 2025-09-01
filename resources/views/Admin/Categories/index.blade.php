@@ -207,6 +207,13 @@
 
         document.getElementById('createCategoryBtn').addEventListener('click', openModalForCreate);
         document.getElementById('saveCategoryBtn').addEventListener('click', saveCategory);
+        
+        categoryModalEl.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                saveCategory();
+            }
+        });
 
         categoryModalEl.addEventListener('hidden.bs.modal', event => {
             document.body.focus();
