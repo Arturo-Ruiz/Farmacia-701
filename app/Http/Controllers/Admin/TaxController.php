@@ -59,6 +59,12 @@ class TaxController extends Controller
      */
     public function destroy(Tax $tax)
     {
+        if ($tax->products()->exists()) {
+            return response()->json([
+                'error' => 'No se puede eliminar el impuesto. Hay productos asociados a este impuesto.'
+            ], 422);
+        }
+
         $tax->delete();
         return response()->json(['message' => 'Impuesto eliminado exitosamente.']);
     }

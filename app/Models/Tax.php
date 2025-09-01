@@ -18,4 +18,9 @@ class Tax extends Model
     protected $casts = [
         'value' => 'decimal:2',
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
