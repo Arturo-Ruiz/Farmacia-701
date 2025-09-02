@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TaxController;
 use App\Http\Controllers\Admin\DayRateController;
+use App\Http\Controllers\Admin\ProductController;
 
 
 
@@ -45,6 +46,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/admin/day-rates', DayRateController::class)
         ->only(methods: ['index', 'show', 'update'])
         ->names(names: 'admin.day-rates');
+
+    // Product management routes
+    Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
+    Route::post('/admin/products/import', [ProductController::class, 'import'])->name('admin.products.import');
 
 
 
