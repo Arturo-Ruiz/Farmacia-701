@@ -56,14 +56,28 @@ class ProductController extends Controller
             $manager = new ImageManager(new Driver());
 
             foreach ($request->file('images') as $image) {
-                $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
-                $filename = $originalName . '.jpg';
+                $filename = $image->getClientOriginalName();
 
                 $processedImage = $manager->read($image)
-                    ->scaleDown(800, 600)
-                    ->toJpeg(80);
+                    ->scaleDown(800, 600);
 
-                $path = 'products/' . $filename;
+                $extension = strtolower($image->getClientOriginalExtension());
+                switch ($extension) {
+                    case 'jpg':
+                    case 'jpeg':
+                        $processedImage = $processedImage->toJpeg(80);
+                        break;
+                    case 'png':
+                        $processedImage = $processedImage->toPng();
+                        break;
+                    case 'gif':
+                        $processedImage = $processedImage->toGif();
+                        break;
+                    default:
+                        $processedImage = $processedImage->toJpeg(80);
+                }
+
+                 $path = 'products/' . $filename;
                 Storage::disk('public')->put($path, $processedImage);
 
                 $uploadedImages[] = [
