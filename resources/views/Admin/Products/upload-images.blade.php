@@ -28,7 +28,6 @@
     </div>
 </div>
 @endsection
-
 @push('scripts')
 <script type="module">
     document.addEventListener('DOMContentLoaded', function() {
@@ -38,6 +37,9 @@
         if (!dropzoneElement || dropzoneElement.dropzone) {
             return;
         }
+
+        let uploadedImagesCount = 0;
+        let totalImagesToUpload = 0;
 
         const dropzone = new Dropzone("#dropzone", {
             url: "/admin/products/upload-images",
@@ -58,15 +60,22 @@
                     response.images.forEach(image => {
                         addImageToGrid(image);
                     });
+                    uploadedImagesCount += response.images.length;
                 }
+            },
 
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Éxito',
-                    text: response.message,
-                    timer: 2000,
-                    showConfirmButton: false
-                });
+            queuecomplete: function() {
+                if (uploadedImagesCount > 0) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: `${uploadedImagesCount} imagen(es) cargada(s) exitosamente`,
+                        timer: 3000,
+                        showConfirmButton: false
+                    });
+
+                    uploadedImagesCount = 0;
+                }
             },
 
             error: function(file, response) {

@@ -47,7 +47,7 @@ class ProductController extends Controller
     public function uploadImages(Request $request)
     {
         $request->validate([
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240',
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240', // 10MB max  
         ]);
 
         $uploadedImages = [];
@@ -56,11 +56,12 @@ class ProductController extends Controller
             $manager = new ImageManager(new Driver());
 
             foreach ($request->file('images') as $image) {
-                $filename = time() . '_' . uniqid() . '.jpg';
+                $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $filename = $originalName . '.jpg';
 
                 $processedImage = $manager->read($image)
                     ->scaleDown(800, 600)
-                    ->toJpeg(80); 
+                    ->toJpeg(80);
 
                 $path = 'products/' . $filename;
                 Storage::disk('public')->put($path, $processedImage);
