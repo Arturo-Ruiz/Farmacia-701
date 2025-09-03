@@ -49,7 +49,15 @@ Route::middleware(['auth'])->group(function () {
 
     // Product management routes
     Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
+    
+    // Product import route
     Route::post('/admin/products/import', [ProductController::class, 'import'])->name('admin.products.import');
+
+    // Product image upload routes
+    Route::get('/admin/products/upload-images', [ProductController::class, 'showUploadImages'])->name('admin.products.upload-images');
+
+    Route::post('/admin/products/upload-images', [ProductController::class, 'uploadImages'])->name('admin.products.store-images');
+
 
 
 

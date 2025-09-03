@@ -8,9 +8,14 @@
     <div class="card-header pb-0">
         <div class="container-fluid d-flex justify-content-between align-items-center mt-2">
             <h5 class="text-header m-0">Productos Registrados</h5>
-            <button id="importExcelBtn" class="btn btn-primary btn-md m-0">
-                <i class="fa-solid fa-file-excel"></i> Importar Excel
-            </button>
+            <div class="d-flex gap-2">
+                <button id="uploadImagesBtn" class="btn btn-success btn-md m-0">
+                    <i class="fa-solid fa-images"></i> Cargar Imágenes
+                </button>
+                <button id="importExcelBtn" class="btn btn-primary btn-md m-0">
+                    <i class="fa-solid fa-file-excel"></i> Importar Excel
+                </button>
+            </div>
         </div>
     </div>
     <div class="card-body">
@@ -125,6 +130,10 @@
         document.getElementById('importExcelBtn').addEventListener('click', () => {
             resetForm();
             importModal.show();
+        });
+
+        document.getElementById('uploadImagesBtn').addEventListener('click', () => {
+            window.location.href = "{{ route('admin.products.upload-images') }}";
         });
 
         document.getElementById('uploadBtn').addEventListener('click', uploadExcel);

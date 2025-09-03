@@ -29,6 +29,24 @@ class ProductsDataTable extends DataTable
             ->addColumn('medical_prescription_text', function (Product $product) {
                 return $product->medical_prescription ? 'Sí' : 'No';
             })
+            ->orderColumn('category_name', function ($query, $order) {
+                return $query->join('categories', 'products.category_id', '=', 'categories.id')
+                    ->orderBy('categories.name', $order);
+            })
+            ->orderColumn('tax_name', function ($query, $order) {
+                return $query->join('taxes', 'products.tax_id', '=', 'taxes.id')
+                    ->orderBy('taxes.name', $order);
+            })
+            ->filterColumn('category_name', function ($query, $keyword) {
+                $query->whereHas('category', function ($q) use ($keyword) {
+                    $q->where('name', 'like', "%{$keyword}%");
+                });
+            })
+            ->filterColumn('tax_name', function ($query, $keyword) {
+                $query->whereHas('tax', function ($q) use ($keyword) {
+                    $q->where('name', 'like', "%{$keyword}%");
+                });
+            })
             ->setRowId('id');
     }
 
@@ -76,11 +94,11 @@ class ProductsDataTable extends DataTable
             Column::make('id')->title('ID'),
             Column::make('name')->title('Nombre'),
             Column::make('laboratory')->title('Laboratorio'),
-            Column::computed('category_name')->title('Categoría'),
-            Column::computed('tax_name')->title('Impuesto'),
+            // Column::computed('category_name')->title('Categoría')->orderable(true)->searchable(true),
+            // Column::computed('tax_name')->title('Impuesto')->orderable(true)->searchable(true),
             Column::make('price')->title('Precio'),
             Column::make('stock')->title('Stock'),
-            Column::computed('medical_prescription_text')->title('Recipe'),
+            // Column::computed('medical_prescription_text')->title('Recipe'),
             Column::make('sales')->title('Ventas'),
             Column::make('img')->title('Imagen'),
         ];
