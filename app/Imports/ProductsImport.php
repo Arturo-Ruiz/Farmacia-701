@@ -20,11 +20,11 @@ class ProductsImport implements ToModel, WithUpserts
             'category_id' => $row[2],
             'tax_id' => $row[4],
             'name' => $row[1],
+            'laboratory' => $row[3] ?? null,
             'price' => $row[7],
             'stock' => $row[5],
             'img' => $row[6] ?? null,
             'medical_prescription' => ($row[8] === "S"),
-            'sales' => 0,
         ]);
     }
 

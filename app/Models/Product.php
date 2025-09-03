@@ -14,6 +14,7 @@ class Product extends Model
         'category_id',
         'tax_id',
         'name',
+        'laboratory',
         'price',
         'stock',
         'img',

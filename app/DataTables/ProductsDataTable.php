@@ -75,6 +75,7 @@ class ProductsDataTable extends DataTable
         return [
             Column::make('id')->title('ID'),
             Column::make('name')->title('Nombre'),
+            Column::make('laboratory')->title('Laboratorio'),
             Column::computed('category_name')->title('Categoría'),
             Column::computed('tax_name')->title('Impuesto'),
             Column::make('price')->title('Precio'),
