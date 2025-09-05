@@ -13,5 +13,5 @@ import Swal from 'sweetalert2';
 window.Swal = Swal;
 
 import { Dropzone } from "dropzone";  
-import "dropzone/dist/dropzone.css";  
+import "../css/dropzone.css";  
 window.Dropzone = Dropzone;
