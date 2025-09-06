@@ -133,8 +133,9 @@ class AdController extends Controller
     {
         $ad = Ad::findOrFail($id);
 
-        if ($ad->img && Storage::disk('public')->exists($ad->img)) {
-            Storage::disk('public')->delete($ad->img);
+        // Corregir la ruta del archivo  
+        if ($ad->img && Storage::disk('public')->exists('ads/' . $ad->img)) {
+            Storage::disk('public')->delete('ads/' . $ad->img);
         }
 
         $ad->delete();

@@ -12,6 +12,6 @@ class Ad extends Model
 
     public function getImgUrlAttribute()
     {
-        return $this->img ? asset('storage/ads/' . $this->img) : null;
+        return $this->img ? asset('storage/ads/' . $this->img) : asset('img/logo.png');
     }
 }
