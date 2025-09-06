@@ -1,12 +1,12 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Anuncios')
+@section('title', 'Publicidades')
 
 @section('content')
 <div class="card">
     <div class="card-header pb-0">
         <div class="container-fluid d-flex justify-content-between align-items-center mt-2">
-            <h5 class="text-header m-0">Anuncios Registrados</h5>
+            <h5 class="text-header m-0">Publicidades Registradas</h5>
             <!-- <button id="uploadImagesBtn" class="btn btn-success btn-md m-0">
                 <i class="fa-solid fa-images"></i> Cargar Anuncios
             </button> -->
