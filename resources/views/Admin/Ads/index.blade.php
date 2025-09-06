@@ -7,9 +7,9 @@
     <div class="card-header pb-0">
         <div class="container-fluid d-flex justify-content-between align-items-center mt-2">
             <h5 class="text-header m-0">Anuncios Registrados</h5>
-            <button id="uploadImagesBtn" class="btn btn-success btn-md m-0">
+            <!-- <button id="uploadImagesBtn" class="btn btn-success btn-md m-0">
                 <i class="fa-solid fa-images"></i> Cargar Anuncios
-            </button>
+            </button> -->
         </div>
     </div>
     <div class="card-body">
@@ -19,15 +19,14 @@
             <div class="col-xl-3 col-md-4 col-sm-6 mb-4" data-ad-id="{{ $ad->id }}">
                 <div class="card shadow-sm h-100">
                     <div class="position-relative">
-
                         <div class="position-absolute top-0 start-0 m-2">
                             <span class="badge bg-primary fs-6">#{{ $ad->id }}</span>
                         </div>
 
-                        <button class="btn btn-danger btn-sm position-absolute top-0 end-0 m-2 delete-ad"
+                        <!-- <button class="btn btn-danger btn-sm position-absolute top-0 end-0 m-2 delete-ad"
                             data-id="{{ $ad->id }}" title="Eliminar anuncio">
                             <i class="fas fa-trash"></i>
-                        </button>
+                        </button> -->
 
                         <div class="card-img-top-container" style="aspect-ratio: 1/1; overflow: hidden;">
                             <img src="{{ $ad->img_url }}"
@@ -53,15 +52,17 @@
                                 {{ $ad->created_at->format('d/m/Y') }}
                             </small>
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-outline-success btn-sm edit-ad"
-                                    data-id="{{ $ad->id }}" title="Editar anuncio">
-                                    <i class="fas fa-pencil"></i>
+                                <button type="button" class="btn btn-sm edit-ad"
+                                    data-id="{{ $ad->id }}" title="Editar anuncio"
+                                    style="background: linear-gradient(45deg, #28a745, #20c997); border: none; color: white;">
+                                    <i class="fas fa-pencil me-1"></i>
                                 </button>
-                                <button type="button" class="btn btn-outline-primary btn-sm view-full"
+                                <button type="button" class="btn btn-sm view-full"
                                     data-bs-toggle="modal" data-bs-target="#imageModal"
                                     data-src="{{ $ad->img_url }}"
-                                    data-title="Anuncio #{{ $index + 1 }}">
-                                    <i class="fas fa-eye"></i>
+                                    data-title="Anuncio #{{ $index + 1 }}"
+                                    style="background: linear-gradient(45deg, #007bff, #6f42c1); border: none; color: white;">
+                                    <i class="fas fa-eye me-1"></i>
                                 </button>
                             </div>
                         </div>
@@ -85,7 +86,6 @@
     </div>
 </div>
 
-<!-- Modal Unificado para Crear/Editar -->
 <div class="modal fade" id="uploadModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -99,7 +99,6 @@
                 <form id="uploadForm" enctype="multipart/form-data">
                     <input type="hidden" id="adId">
 
-                    <!-- Vista previa para edición -->
                     <div class="mb-3 text-center d-none" id="currentImageContainer">
                         <img id="currentImage" src="" alt="Imagen actual"
                             class="img-fluid rounded" style="max-height: 200px;">
@@ -135,7 +134,6 @@
     </div>
 </div>
 
-<!-- Modal para Ver Imagen Completa -->
 <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -233,14 +231,14 @@
                 let url, method;
                 if (isEditing) {
                     url = `/admin/ads/${currentAdId}`;
-                    method = 'POST'; // Cambiar a POST para usar _method  
-                    formData.append('_method', 'PUT'); // Spoofing de método  
+                    method = 'POST';
+                    formData.append('_method', 'PUT');
 
                     if (fileInput.files.length > 0) {
                         formData.delete('images[]');
                         formData.append('image', fileInput.files[0]);
                     } else {
-                        // Si no hay archivo nuevo, no hacer nada  
+
                         Toast.fire({
                             icon: 'info',
                             title: 'No se seleccionó ninguna imagen nueva'
@@ -321,7 +319,6 @@
                     const data = await response.json();
 
                     if (response.ok) {
-                        // Recargar la página para actualizar la numeración  
                         window.location.reload();
                     } else {
                         Toast.fire({
@@ -338,16 +335,13 @@
             }
         };
 
-        // Event Listeners  
-        document.getElementById('uploadImagesBtn').addEventListener('click', openModalForCreate);
+        // document.getElementById('uploadImagesBtn').addEventListener('click', openModalForCreate);
         document.getElementById('uploadBtn').addEventListener('click', uploadImages);
 
-        // Event listeners para botones de eliminar  
-        document.querySelectorAll('.delete-ad').forEach(btn => {
-            btn.addEventListener('click', deleteAd);
-        });
+        // document.querySelectorAll('.delete-ad').forEach(btn => {
+        //     btn.addEventListener('click', deleteAd);
+        // });
 
-        // Event listeners para botones de editar  
         document.querySelectorAll('.edit-ad').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const adId = e.target.closest('.edit-ad').dataset.id;
@@ -355,7 +349,6 @@
             });
         });
 
-        // Event listeners para ver imagen completa  
         document.querySelectorAll('.view-full').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const src = e.target.closest('.view-full').dataset.src;
