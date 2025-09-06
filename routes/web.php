@@ -62,7 +62,9 @@ Route::middleware(['auth'])->group(function () {
 
     // Ad management routes  
     Route::get('/admin/ads', [AdController::class, 'index'])->name('admin.ads.index');
+    Route::get('/admin/ads/{id}', [AdController::class, 'show'])->name('admin.ads.show');
     Route::post('/admin/ads/upload-images', [AdController::class, 'uploadImages'])->name('admin.ads.store-images');
+    Route::put('/admin/ads/{id}', [AdController::class, 'update'])->name('admin.ads.update');
     Route::delete('/admin/ads/{id}', [AdController::class, 'destroy'])->name('admin.ads.destroy');
 
 

@@ -16,15 +16,15 @@ class AdController extends Controller
 {
     public function index()
     {
-        $ads = Ad::latest()->get();
+        $ads = Ad::orderBy('created_at', 'asc')->get();
         return view('admin.ads.index', compact('ads'));
     }
 
-    public function showUploadImages()
+    public function show($id)
     {
-        return view('admin.ads.upload-images');
+        $ad = Ad::findOrFail($id);
+        return response()->json($ad);
     }
-
 
     public function uploadImages(Request $request)
     {
@@ -61,9 +61,10 @@ class AdController extends Controller
                 }
 
                 $path = 'ads/' . $filename;
+
                 Storage::disk('public')->put($path, $processedImage);
 
-                $ad = Ad::create(['img' => $path]);
+                $ad = Ad::create(['img' => $filename]);
 
                 $uploadedImages[] = [
                     'id' => $ad->id,
@@ -77,6 +78,54 @@ class AdController extends Controller
         return response()->json([
             'message' => 'Anuncios cargados exitosamente',
             'images' => $uploadedImages
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240',
+        ]);
+
+        $ad = Ad::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $manager = new ImageManager(new Driver());
+            $image = $request->file('image');
+            $filename = $image->getClientOriginalName();
+
+            $processedImage = $manager->read($image)
+                ->scaleDown(500, 500);
+
+            $extension = strtolower($image->getClientOriginalExtension());
+            switch ($extension) {
+                case 'jpg':
+                case 'jpeg':
+                    $processedImage = $processedImage->toJpeg(80);
+                    break;
+                case 'png':
+                    $processedImage = $processedImage->toPng();
+                    break;
+                case 'gif':
+                    $processedImage = $processedImage->toGif();
+                    break;
+                default:
+                    $processedImage = $processedImage->toJpeg(80);
+            }
+
+            if ($ad->img && Storage::disk('public')->exists('ads/' . $ad->img)) {
+                Storage::disk('public')->delete('ads/' . $ad->img);
+            }
+
+            $path = 'ads/' . $filename;
+            Storage::disk('public')->put($path, $processedImage);
+
+            $ad->update(['img' => $filename]);
+        }
+
+        return response()->json([
+            'message' => 'Anuncio actualizado exitosamente',
+            'ad' => $ad
         ]);
     }
 

@@ -14,15 +14,18 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Call the UserSeeder to seed the users table
-        $this->call(UserSeeder::class);
+        // $this->call(UserSeeder::class);
 
         // Call the CategorySeeder to seed the categories table
-        $this->call(CategorySeeder::class);
+        // $this->call(CategorySeeder::class);
 
         // Call the TaxSeeder to seed the taxes table
-        $this->call(TaxSeeder::class);
+        // $this->call(TaxSeeder::class);
 
         //Call the DayRateSeeder to seed the day_rates table
-        $this->call(DayRateSeeder::class);
+        // $this->call(DayRateSeeder::class);
+
+        // Call the AdSeeder to seed the ads table
+        $this->call(AdSeeder::class);
     }
 }
