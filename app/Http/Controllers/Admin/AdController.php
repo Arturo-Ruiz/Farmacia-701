@@ -4,44 +4,32 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\DataTables\ProductsDataTable;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\ProductsImport;
+
+use App\Models\Ad;
 
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+
 use Illuminate\Support\Facades\Storage;
 
-use function Pest\Laravel\call;
-
-class ProductController extends Controller
+class AdController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(ProductsDataTable $dataTable)
+    public function index()
     {
-        return $dataTable->render('admin.products.index');
+        $ads = Ad::latest()->get();
+        return view('admin.ads.index', compact('ads'));
     }
 
-    public function import(Request $request)
+    public function showUploadImages()
     {
-
-        $request->validate([
-            'excel_file' => 'required|file|mimes:xlsx,xls,csv'
-        ]);
-
-        try {
-            Excel::import(new ProductsImport, filePath: $request->file('excel_file'));
-            return response()->json(['message' => 'Productos importados exitosamente.']);
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Error al importar: ' . $e->getMessage()], 422);
-        }
+        return view('admin.ads.upload-images');
     }
+
 
     public function uploadImages(Request $request)
     {
         $request->validate([
+            'images' => 'required|array',
             'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240',
         ]);
 
@@ -54,7 +42,7 @@ class ProductController extends Controller
                 $filename = $image->getClientOriginalName();
 
                 $processedImage = $manager->read($image)
-                    ->scaleDown(800, height: 600);
+                    ->scaleDown(500, 500);
 
                 $extension = strtolower($image->getClientOriginalExtension());
                 switch ($extension) {
@@ -72,10 +60,13 @@ class ProductController extends Controller
                         $processedImage = $processedImage->toJpeg(80);
                 }
 
-                $path = 'products/' . $filename;
+                $path = 'ads/' . $filename;
                 Storage::disk('public')->put($path, $processedImage);
 
+                $ad = Ad::create(['img' => $path]);
+
                 $uploadedImages[] = [
+                    'id' => $ad->id,
                     'filename' => $filename,
                     'path' => $path,
                     'url' => Storage::url($path)
@@ -84,8 +75,21 @@ class ProductController extends Controller
         }
 
         return response()->json([
-            'message' => 'Imágenes cargadas exitosamente',
+            'message' => 'Anuncios cargados exitosamente',
             'images' => $uploadedImages
         ]);
+    }
+
+    public function destroy($id)
+    {
+        $ad = Ad::findOrFail($id);
+
+        if ($ad->img && Storage::disk('public')->exists($ad->img)) {
+            Storage::disk('public')->delete($ad->img);
+        }
+
+        $ad->delete();
+
+        return response()->json(['message' => 'Publicidad eliminada exitosamente']);
     }
 }
