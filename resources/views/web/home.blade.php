@@ -50,7 +50,6 @@
             });
         }
 
-        // Animaciones escalonadas para secciones  
         setTimeout(function() {
             $('.carousel-section').addClass('animate');
             loadImagesGracefully();
@@ -73,7 +72,6 @@
             document.querySelector("body").classList.remove("search-brand");
         });
 
-        // Configuración mejorada del carousel de laboratorios  
         $(".categories-owl-carousel").owlCarousel({
             loop: true,
             autoplay: true,
@@ -86,7 +84,6 @@
             animateOut: 'fadeOut',
             animateIn: 'fadeIn',
             onInitialized: function() {
-                // Animar items después de inicializar  
                 setTimeout(function() {
                     $('.categories-owl-carousel .owl-item').addClass('active');
                 }, 100);
@@ -104,7 +101,6 @@
             }
         });
 
-        // Configuración mejorada del carousel de anuncios  
         $(".carousel-ads").owlCarousel({
             loop: true,
             margin: 10,
@@ -121,10 +117,10 @@
             },
             responsive: {
                 0: {
-                    items: 4
+                    items: 3
                 },
                 600: {
-                    items: 5
+                    items: 4
                 },
                 1000: {
                     items: 6
