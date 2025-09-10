@@ -89,7 +89,7 @@
         </div>
     </main>
 
-    @vite(['resources/assets/admin/js/app.min.js','resources/assets/admin/js/core/popper.min.js', 'resources/assets/admin/js/core/bootstrap.min.js', 'resources/assets/admin/js/plugins/perfect-scrollbar.min.js', 'resources/assets/admin/js/plugins/smooth-scrollbar.min.js', 'resources/assets/admin/js/plugins/chartjs.min.js', 'resources/js/app.js'])
+    @vite(['resources/js/app.js','resources/assets/admin/js/app.min.js','resources/assets/admin/js/core/popper.min.js', 'resources/assets/admin/js/core/bootstrap.min.js', 'resources/assets/admin/js/plugins/perfect-scrollbar.min.js', 'resources/assets/admin/js/plugins/smooth-scrollbar.min.js', 'resources/assets/admin/js/plugins/chartjs.min.js', ])
 
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
