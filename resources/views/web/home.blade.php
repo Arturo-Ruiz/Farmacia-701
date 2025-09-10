@@ -121,13 +121,13 @@
             },
             responsive: {
                 0: {
-                    items: 3
+                    items: 4
                 },
                 600: {
-                    items: 3
+                    items: 5
                 },
                 1000: {
-                    items: 5
+                    items: 6
                 }
             }
         });
