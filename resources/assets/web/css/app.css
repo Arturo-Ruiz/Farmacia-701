@@ -2038,7 +2038,7 @@ body.search-brand-collapse {
     top: 8px;
     left: 8px;
     background-color: #ffffff;
-    color:  #471396;
+    color: #471396;
     font-size: 9px;
     font-weight: 700;
     padding: 3px 6px;
@@ -2046,7 +2046,7 @@ body.search-brand-collapse {
     z-index: 3;
     text-transform: uppercase;
     letter-spacing: 0.3px;
-    border: 1.5px solid  #471396;
+    border: 1.5px solid #471396;
     font-family: 'Arial', sans-serif;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
@@ -2059,7 +2059,17 @@ body.search-brand-collapse {
 
 /* Hover sutil */
 .product-card:hover .prescription-badge {
-    background-color:  #471396;
+    background-color: #471396;
     color: white;
     transition: all 0.2s ease;
+}
+
+@media (max-width: 991px) {
+    .carousel-item img {
+        border-radius: 80px 0px 80px 0px !important;
+    }
+
+    .carousel-inner {
+        border-radius: 80px 0px 80px 0px !important;
+    }
 }
