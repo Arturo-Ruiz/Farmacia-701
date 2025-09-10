@@ -64,16 +64,16 @@
                         <div class="col-lg-6">
                             <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                                 <li class="nav-item">
-                                    <a href="https://farmacia701.com" class="nav-link text-muted" target="_blank">Farmacia 701</a>
+                                    <a href="https://farmacia701.com" class="nav-link">Farmacia 701</a>
                                 </li>
                                 <!-- <li class="nav-item">
-                                    <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                                    <a href="#" class="nav-link text-muted" target="_blank">About Us</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+                                    <a href="#" class="nav-link text-muted" target="_blank">Blog</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                                    <a href="#" class="nav-link pe-0 text-muted" target="_blank">License</a>
                                 </li> -->
                             </ul>
                         </div>
@@ -83,10 +83,12 @@
         </div>
     </main>
 
-    <script src="https://demos.creative-tim.com/argon-dashboard/assets/js/core/popper.min.js"></script>
-    <script src="https://demos.creative-tim.com/argon-dashboard/assets/js/core/bootstrap.min.js"></script>
+    <!--   Core JS Files   -->
+    <script src="{{ asset('js/admin/popper.min.js') }}"></script>
+    <script src="{{asset('js/admin/bootstrap.min.js')}}"></script>
 
-    @vite(['resources/js/app.js','resources/assets/admin/js/app.min.js', 'resources/assets/admin/js/core/bootstrap.min.js', 'resources/assets/admin/js/plugins/perfect-scrollbar.min.js', 'resources/assets/admin/js/plugins/smooth-scrollbar.min.js', 'resources/assets/admin/js/plugins/chartjs.min.js', ])
+    
+    @vite(['resources/js/app.js','resources/assets/admin/js/app.min.js', 'resources/assets/admin/js/plugins/perfect-scrollbar.min.js', 'resources/assets/admin/js/plugins/smooth-scrollbar.min.js', 'resources/assets/admin/js/plugins/chartjs.min.js', ])
 
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
