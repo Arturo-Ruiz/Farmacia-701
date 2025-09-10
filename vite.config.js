@@ -12,7 +12,6 @@ export default defineConfig({
                 "resources/assets/admin/css/app.min.css",
                 "resources/assets/admin/css/login.css",
 
-                "resources/assets/admin/js/core/popper.min.js",
                 "resources/assets/admin/js/core/bootstrap.min.js",
                 "resources/assets/admin/js/plugins/perfect-scrollbar.min.js",
                 "resources/assets/admin/js/plugins/smooth-scrollbar.min.js",
