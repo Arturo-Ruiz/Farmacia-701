@@ -67,6 +67,7 @@ class WebController extends Controller
         $dayRate = DayRate::latest()->first();
 
         $productsQuery = Product::with(['category', 'tax'])
+            ->where('stock', '>', 0)
             ->where(function ($q) use ($query) {
                 $q->where('name', 'LIKE', '%' . $query . '%')
                     ->orWhere('laboratory', 'LIKE', '%' . $query . '%')
@@ -75,7 +76,6 @@ class WebController extends Controller
                     });
             });
 
-        // Aplicar ordenamiento por precio  
         if ($priceOrder === 'asc') {
             $productsQuery->orderBy('price', 'asc');
         } elseif ($priceOrder === 'desc') {
@@ -86,13 +86,14 @@ class WebController extends Controller
 
         $products = $productsQuery->offset($offset)->limit($limit)->get();
 
-        $totalResults = Product::where(function ($q) use ($query) {
-            $q->where('name', 'LIKE', '%' . $query . '%')
-                ->orWhere('laboratory', 'LIKE', '%' . $query . '%')
-                ->orWhereHas('category', function ($categoryQuery) use ($query) {
-                    $categoryQuery->where('name', 'LIKE', '%' . $query . '%');
-                });
-        })->count();
+        $totalResults = Product::where('stock', '>', 0)
+            ->where(function ($q) use ($query) {
+                $q->where('name', 'LIKE', '%' . $query . '%')
+                    ->orWhere('laboratory', 'LIKE', '%' . $query . '%')
+                    ->orWhereHas('category', function ($categoryQuery) use ($query) {
+                        $categoryQuery->where('name', 'LIKE', '%' . $query . '%');
+                    });
+            })->count();
 
         if ($request->ajax()) {
             return response()->json([
@@ -117,6 +118,7 @@ class WebController extends Controller
         }
 
         $productsQuery = Product::with(['category', 'tax'])
+            ->where('stock', '>', 0)
             ->where(function ($q) use ($query) {
                 $q->where('name', 'LIKE', '%' . $query . '%')
                     ->orWhere('laboratory', 'LIKE', '%' . $query . '%')
@@ -136,13 +138,14 @@ class WebController extends Controller
 
         $products = $productsQuery->offset($offset)->limit($limit)->get();
 
-        $totalResults = Product::where(function ($q) use ($query) {
-            $q->where('name', 'LIKE', '%' . $query . '%')
-                ->orWhere('laboratory', 'LIKE', '%' . $query . '%')
-                ->orWhereHas('category', function ($categoryQuery) use ($query) {
-                    $categoryQuery->where('name', 'LIKE', '%' . $query . '%');
-                });
-        })->count();
+        $totalResults = Product::where('stock', '>', 0)
+            ->where(function ($q) use ($query) {
+                $q->where('name', 'LIKE', '%' . $query . '%')
+                    ->orWhere('laboratory', 'LIKE', '%' . $query . '%')
+                    ->orWhereHas('category', function ($categoryQuery) use ($query) {
+                        $categoryQuery->where('name', 'LIKE', '%' . $query . '%');
+                    });
+            })->count();
 
         $dayRate = DayRate::latest()->first();
 
@@ -160,6 +163,7 @@ class WebController extends Controller
 
         // Obtener TODOS los productos del laboratorio ordenados por ventas (sin límite)  
         $products = Product::with(['category', 'tax'])
+            ->where('stock', '>', 0)
             ->where('laboratory', 'LIKE', '%' . $laboratory->keyword . '%')
             ->orderBy('sales', 'desc')
             ->get(); // Sin limit() para traer todos  
