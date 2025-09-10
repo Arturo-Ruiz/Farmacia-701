@@ -1,0 +1,66 @@
+<?php
+
+namespace App\DataTables;
+
+use App\Models\Category;
+use Yajra\DataTables\Services\DataTable;
+use Yajra\DataTables\Html\Column;
+use Illuminate\Database\Eloquent\Builder as QueryBuilder;
+use Yajra\DataTables\Html\Builder as HtmlBuilder;
+use Yajra\DataTables\EloquentDataTable;
+
+class CategoriesDataTable extends DataTable
+{
+    public function dataTable(QueryBuilder $query): EloquentDataTable
+    {
+        return (new EloquentDataTable($query))
+            ->addColumn('action', function (Category $category) {
+                return '
+                    <button class="btn btn-success edit-btn mt-3" data-id="' . $category->id . '"><i class="fa-solid fa-pencil mr-2"></i> Editar</button>  
+                    <button class="btn btn-danger delete-btn mt-3" data-id="' . $category->id . '"><i class="fa-solid fa-trash mr-2"></i> Eliminar</button>
+                ';
+            })
+            ->setRowId('id');
+    }
+
+    public function query(Category $model): QueryBuilder
+    {
+        return $model->newQuery();
+    }
+
+    public function html(): HtmlBuilder
+    {
+        return $this->builder()
+            ->setTableId('categories-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->orderBy(0, 'desc')
+            ->parameters([
+                'language' => [
+                    'sProcessing'     => 'Procesando...',
+                    'sLengthMenu'     => 'Mostrando _MENU_ registros',
+                    'sZeroRecords'    => 'No se encontraron resultados',
+                    'sEmptyTable'     => 'Ningún dato disponible en esta tabla',
+                    'sInfo'           => 'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
+                    'sInfoEmpty'      => 'Mostrando registros del 0 al 0 de un total de 0 registros',
+                    'sInfoFiltered'   => '(filtrado de un total de _MAX_ registros)',
+                    'sSearch'         => 'Buscar:',
+                    'sLoadingRecords' => 'Cargando...',
+                ],
+            ]);
+    }
+
+    public function getColumns(): array
+    {
+        return [
+            Column::make('id')->title('ID'),
+            Column::make('name')->title('Nombre'),
+            Column::computed('action')
+                ->title('')
+                ->exportable(true)
+                ->printable(false)
+                ->width(150)
+                ->addClass('text-center'),
+        ];
+    }
+}

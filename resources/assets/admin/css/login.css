@@ -1,0 +1,32 @@
+.input-wrapper {
+    border: 1px solid #d2d6da;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease-in-out;
+    background-color: white;
+    display: flex;
+}
+
+.input-wrapper:focus-within {
+    border-color: #5E72E4 !important;
+    box-shadow: 0 0 0 3px rgba(94, 114, 228, 0.25) !important;
+}
+
+.input-wrapper .input-group {
+    border: none;
+    box-shadow: none;
+}
+
+.input-wrapper .input-group .form-control {
+    border: none;
+    box-shadow: none;
+}
+
+.input-wrapper .input-group .input-group-text {
+    border: none;
+}
+
+.login-background-section {
+    background-image: url('../img/login-background.webp');
+    background-size: cover;
+    background-position: center;
+}
