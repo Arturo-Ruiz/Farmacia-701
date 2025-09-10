@@ -46,8 +46,6 @@
     <meta name="geo.position" content="8.1292;-63.5400">
     <meta name="ICBM" content="8.1292, -63.5400">
 
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self';"> -->
-
     <meta name="DC.title" content="Farmacia en Ciudad Bolívar">
     <meta name="DC.creator" content="Farmacia Ciudad Bolívar">
     <meta name="DC.subject" content="medicamentos, salud, farmacia en Ciudad Bolívar">
@@ -81,11 +79,13 @@
     <x-web.layout.whatsapp-float />
     <x-web.layout.footer />
 
+    
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     @vite(['resources/assets/web/js/owl.carousel.min.js'])
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.23.0/sweetalert2.min.js" integrity="sha512-pnPZhx5S+z5FSVwy62gcyG2Mun8h6R+PG01MidzU+NGF06/ytcm2r6+AaWMBXAnDHsdHWtsxS0dH8FBKA84FlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 

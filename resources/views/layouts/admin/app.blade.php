@@ -64,7 +64,7 @@
                         <div class="col-lg-6">
                             <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                                 <li class="nav-item">
-                                    <a href="https://farmacia701.com" class="nav-link">Farmacia 701</a>
+                                    <a href="{{ config('app.url') }}" class="nav-link">Farmacia 701</a>
                                 </li>
                                 <!-- <li class="nav-item">
                                     <a href="#" class="nav-link text-muted" target="_blank">About Us</a>
