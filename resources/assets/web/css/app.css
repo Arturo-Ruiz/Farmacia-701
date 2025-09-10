@@ -2066,10 +2066,10 @@ body.search-brand-collapse {
 
 @media (max-width: 991px) {
     .carousel-item img {
-        border-radius: 80px 0px 80px 0px !important;
+        border-radius: 60px 0px 60px 0px !important;
     }
 
     .carousel-inner {
-        border-radius: 80px 0px 80px 0px !important;
+        border-radius: 60px 0px 60px 0px !important;
     }
 }
