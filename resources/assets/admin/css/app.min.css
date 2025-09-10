@@ -27916,3 +27916,7 @@ screen and (-ms-high-contrast:active) {
     font-size: 0.75rem;
     font-weight: 500;
 }
+
+.div.dt-container div.dt-length select {
+    width: 100px !important;
+}

@@ -28,12 +28,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     @vite(['resources/assets/admin/css/app.min.css'])
-
-    <style>
-        .div.dt-container div.dt-length select {
-            width: 100px;
-        }
-    </style>
 </head>
 
 <body class="g-sidenav-show" data-user-id="{{ Auth::id() }}">
@@ -91,6 +85,7 @@
 
     <script src="https://demos.creative-tim.com/argon-dashboard/assets/js/core/popper.min.js"></script>
     <script src="https://demos.creative-tim.com/argon-dashboard/assets/js/core/bootstrap.min.js"></script>
+
     @vite(['resources/js/app.js','resources/assets/admin/js/app.min.js', 'resources/assets/admin/js/core/bootstrap.min.js', 'resources/assets/admin/js/plugins/perfect-scrollbar.min.js', 'resources/assets/admin/js/plugins/smooth-scrollbar.min.js', 'resources/assets/admin/js/plugins/chartjs.min.js', ])
 
     <script async defer src="https://buttons.github.io/buttons.js"></script>
