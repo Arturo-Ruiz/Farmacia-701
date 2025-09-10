@@ -1,5 +1,7 @@
 import "./bootstrap";
 
+import "@popperjs/core"
+
 import jquery from "jquery";
 window.$ = jquery;
 
