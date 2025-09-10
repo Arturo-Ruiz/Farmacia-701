@@ -89,6 +89,8 @@
         </div>
     </main>
 
+    <script src="https://demos.creative-tim.com/argon-dashboard/assets/js/core/popper.min.js"></script>
+    <script src="https://demos.creative-tim.com/argon-dashboard/assets/js/core/bootstrap.min.js"></script>
     @vite(['resources/js/app.js','resources/assets/admin/js/app.min.js', 'resources/assets/admin/js/core/bootstrap.min.js', 'resources/assets/admin/js/plugins/perfect-scrollbar.min.js', 'resources/assets/admin/js/plugins/smooth-scrollbar.min.js', 'resources/assets/admin/js/plugins/chartjs.min.js', ])
 
     <script async defer src="https://buttons.github.io/buttons.js"></script>
