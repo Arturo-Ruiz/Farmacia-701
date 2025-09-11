@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\AdController;
 use App\Http\Controllers\Admin\CarouselController;
 use App\Http\Controllers\Admin\LaboratoryController;
 use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Admin\SaleController;
+
 
 use App\Http\Controllers\Web\WebController;
 use App\Http\Controllers\Web\OrderController;
@@ -85,6 +87,10 @@ Route::middleware(['auth'])->group(function () {
     // Client management routes
     Route::resource('/admin/clients', ClientController::class)->only(['index', 'show', 'update'])->names('admin.clients');
     Route::get('/admin/clients/{client}/purchases', [ClientController::class, 'showPurchases'])->name('admin.clients.purchases');
+
+    // Sales management routes
+    Route::resource('/admin/sales', SaleController::class)->only(['index', 'show'])->names('admin.sales');
+
 
     // Logout route
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');

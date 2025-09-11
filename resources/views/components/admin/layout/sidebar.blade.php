@@ -1,6 +1,6 @@
 <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <div class="sidenav-header">
-    <i class="fas fa-times p-2 cursor-pointer position-absolute end-0 top-0 d-none d-xl-none hover:bg-dark transition-all icon-sidenav" aria-hidden="true" id="iconSidenav"></i>
+        <i class="fas fa-times p-2 cursor-pointer position-absolute end-0 top-0 d-none d-xl-none hover:bg-dark transition-all icon-sidenav" aria-hidden="true" id="iconSidenav"></i>
 
         <a class="navbar-brand m-0" href="{{ route('admin.dashboard') }}">
             <img src="{{ asset('img/logo.png') }}" class="navbar-brand-img me-2" alt="main_logo" style="max-width: 36px; height: auto;">
@@ -89,6 +89,14 @@
                         <i class="fa-solid fa-users text-dark text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Clientes</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('admin.sales.*') ? 'active' : '' }}" href="{{ route('admin.sales.index') }}">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-shopping-cart text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Ventas</span>
                 </a>
             </li>
             <!-- <li class="nav-item mt-3">
