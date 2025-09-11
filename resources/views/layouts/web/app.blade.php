@@ -27,7 +27,7 @@
     <meta name="robots" content="index, follow">
 
     <link rel="canonical" href="{{ url()->current() }}">
-    
+
     <meta property="og:title" content="Farmacia en Ciudad Bolívar - Medicamentos y Entrega a Domicilio">
     <meta property="og:description" content="Farmacia en Ciudad Bolívar con servicio de entrega a domicilio. Encuentra medicamentos y productos de salud.">
     <meta property="og:image" content="https://farmacia701.com/img/banner.jpg">
@@ -74,7 +74,10 @@
 <body class="@yield('body-class', '')">
     <x-web.layout.navbar />
 
-    @yield('content')
+    <div class="main-content" style="margin-top: 90px;">
+        @yield('content')
+
+    </div>
 
     <x-web.layout.whatsapp-float />
     <x-web.layout.footer />
