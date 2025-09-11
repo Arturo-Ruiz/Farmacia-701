@@ -96,6 +96,34 @@
             if (typeof updateCartCounter === 'function') {
                 updateCartCounter();
             }
+
+            function getGreeting() {
+                const now = new Date();
+                const hour = now.getHours();
+                let greeting = '';
+
+                if (hour >= 6 && hour < 12) {
+                    greeting = '¡Hola, buenos días 🌤️,';
+                } else if (hour >= 12 && hour < 19) {
+                    greeting = '¡Hola, buenas tardes 🌇,';
+                } else {
+                    greeting = '¡Hola, buenas noches 🌙,';
+                }
+                return greeting;
+            }
+
+            const whatsappLink = document.getElementById('whatsapp-link');
+
+            const greetingMessage = getGreeting();
+
+            const message = `${greetingMessage} Farmacia 701! 💙 \n Quería saber si tienen este medicamento disponible 💊 y, de ser así, cuál es su costo. \n 💰 ¡Muchas gracias! 🙏\n\nMedicamento/Producto:`;
+
+            const encodedMessage = encodeURIComponent(message);
+
+            const phoneNumber = '584141850671';
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+
+            whatsappLink.href = whatsappUrl;
         });
     </script>
 
