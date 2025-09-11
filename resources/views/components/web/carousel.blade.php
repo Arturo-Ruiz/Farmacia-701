@@ -1,7 +1,7 @@
 @props(['carousels'])
 
 <!-- Carousel Component -->
-<section class="container py-3">
+<section class="container py-2">
     @if($carousels->count() > 0)
     <div id="carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">

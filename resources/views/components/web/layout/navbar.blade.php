@@ -16,7 +16,7 @@
         <div class="navbar-nav col-3 d-flex align-items-center justify-content-center">
             <a href="{{ route('web.cart') }}" type="button" class="position-relative button-cart">
                 <i class="fa-solid fa-cart-shopping"></i>
-                <span class="cart-counter position-absolute top-0 start-100 translate-middle badge bg-danger rounded-circle bg-secondary" id="cart-count">0</span>
+                <span class="cart-counter animate-counter    position-absolute top-0 start-100 translate-middle badge bg-danger rounded-circle bg-secondary" id="cart-count">0</span>
             </a>
         </div>
     </nav>

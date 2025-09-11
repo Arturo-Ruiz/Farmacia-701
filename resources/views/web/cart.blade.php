@@ -29,16 +29,16 @@
                     </h3>
                     <form id="cart-form">
                         <div class="mb-3">
-                            <label class="form-label">Nombre y Apellido o Nombre de empresa</label>
-                            <input type="text" class="form-control" name="customer_name"
-                                placeholder="Nombre y Apellido o Nombre de empresa" required>
-                        </div>
-
-                        <div class="mb-3">
                             <label class="form-label">Cédula o Rif <small class="text-muted">(Empieza con V, E o J)</small>
                             </label>
                             <input type="text" class="form-control" name="customer_id"
                                 placeholder="V-12345678 o J-12345678" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Nombre y Apellido o Nombre de empresa</label>
+                            <input type="text" class="form-control" name="customer_name"
+                                placeholder="Nombre y Apellido o Nombre de empresa" required>
                         </div>
 
                         <div class="mb-3">
@@ -126,9 +126,19 @@
 
             <div class="col-lg-6 order-1 order-lg-2 ">
                 <div class="cart-summary-section fade-in-up">
-                    <h3 class="mb-4">
-                        <i class="fas fa-shopping-bag me-2"></i>Su pedido
-                    </h3>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="mb-0">
+                            <i class="fas fa-shopping-bag me-2"></i>Su pedido
+                        </h3>
+                        @if($dayRate)
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-dollar-sign text-primary me-2"></i>
+                            <span class="me-2">Tasa del día:</span>
+                            <span class="fw-bold text-primary">Bs. {{ number_format($dayRate->value, 2) }}</span>
+                        </div>
+                        @endif
+                    </div>
+
                     <div class="cart-items-container">
                         {{-- Tabla para dispositivos de escritorio --}}
                         <div class="table-responsive d-none d-lg-block">
@@ -509,6 +519,48 @@
             if (currentValue.length === 0) {
                 if (!/[VEJPG]/.test(char)) {
                     e.preventDefault();
+                }
+            }
+        });
+
+        $('input[name="customer_id"]').on('blur', async function() {
+            const idCard = $(this).val().trim();
+
+            if (idCard.length >= 5) { // Mínimo V-123  
+                try {
+                    const response = await fetch('{{ route("web.cart.search-client") }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_card: idCard
+                        })
+                    });
+
+                    const result = await response.json();
+
+                    if (result.found) {
+                        // Rellenar campos automáticamente  
+                        $('input[name="customer_name"]').val(result.client.name);
+                        $('input[name="email"]').val(result.client.email || '');
+                        $('input[name="phone"]').val(result.client.phone || '');
+                        $('textarea[name="address"]').val(result.client.address || '');
+
+                        // Mostrar notificación de éxito  
+                        Swal.fire({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Cliente encontrado - Datos cargados automáticamente',
+                            showConfirmButton: false,
+                            timer: 3000
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error al buscar cliente:', error);
                 }
             }
         });

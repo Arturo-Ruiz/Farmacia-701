@@ -113,6 +113,29 @@ class OrderController extends Controller
         }
     }
 
+    public function searchClient(Request $request)
+    {
+        $request->validate([
+            'id_card' => 'required|string|max:20'
+        ]);
+
+        $client = Client::where('id_card', $request->id_card)->first();
+
+        if ($client) {
+            return response()->json([
+                'found' => true,
+                'client' => [
+                    'name' => $client->name,
+                    'email' => $client->email,
+                    'phone' => $client->phone,
+                    'address' => $client->address
+                ]
+            ]);
+        }
+
+        return response()->json(['found' => false]);
+    }
+
     private function redirectToWhatsApp($client, $sale, $products, $dayRate)
     {
         $formattedProducts = [];

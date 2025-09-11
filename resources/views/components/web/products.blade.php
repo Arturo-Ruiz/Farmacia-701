@@ -62,7 +62,7 @@
                                 data-product-laboratory="{{ $product->laboratory }}"
                                 data-product-image="{{ $product->img_url }}"
                                 data-product-stock="{{ $product->stock }}">
-                                Agregar al carrito
+                                <i class="fas fa-shopping-cart me-2"></i>Agregar al carrito
                             </a>
 
                             <div class="quantity-controls d-none" data-product-id="{{ $product->id }}">
@@ -264,15 +264,15 @@
         if (product.stock > 0) {
             const buttonHtml = `  
             <div class="product-button-container">  
-                <a href="#" class="btn btn-dark w-100 product-button add-to-cart"  
-                    data-product-id="${product.id}"  
-                    data-product-name="${product.name}"  
-                    data-product-price="${product.price}"  
-                    data-product-laboratory="${product.laboratory || 'Sin laboratorio'}"  
-                    data-product-image="/storage/products/${product.img}"  
-                    data-product-stock="${product.stock}">  
-                    Agregar al carrito  
-                </a>  
+                 <a href="#" class="btn btn-dark w-100 product-button add-to-cart"    
+                    data-product-id="${product.id}"    
+                    data-product-name="${product.name}"    
+                    data-product-price="${product.price}"    
+                    data-product-laboratory="${product.laboratory || 'Sin laboratorio'}"    
+                    data-product-image="/storage/products/${product.img}"    
+                    data-product-stock="${product.stock}">    
+                    <i class="fas fa-shopping-cart me-2"></i>Agregar al carrito    
+                </a>    
                 <div class="quantity-controls d-none" data-product-id="${product.id}">  
                     <button class="btn decrease-quantity" type="button">  
                         <i class="fas fa-minus"></i>  

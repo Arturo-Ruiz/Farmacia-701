@@ -29,6 +29,7 @@ Route::get('/buscar/cargar-mas', [WebController::class, 'loadMoreSearchResults']
 Route::get('/Laboratorio/{keyword}', [WebController::class, 'laboratory'])->name('web.laboratory');
 Route::get('/carrito-de-compras', [WebController::class, 'cart'])->name('web.cart');
 Route::post('/cart/process-order', [OrderController::class, 'processOrder'])->name('web.cart.process-order');
+Route::post('/cart/search-client', [OrderController::class, 'searchClient'])->name('web.cart.search-client');
 
 // Authentication Routes
 Route::middleware(['guest'])->group(function () {

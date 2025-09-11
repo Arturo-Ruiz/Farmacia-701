@@ -131,7 +131,7 @@
         </div>
     </div>
     <div class="col-lg-4">
-        <div class="card mb-3">
+        <div class="card mb-4">
             <div class="card-header pb-0 p-3">
                 <h6 class="mb-0">
                     <i class="fas fa-exchange-alt text-primary me-2"></i>Tasa del Día
