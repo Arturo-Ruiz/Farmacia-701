@@ -5,7 +5,6 @@
     --color__orange: #ffa207;
 }
 
-
 .button-blue {
     color: #fff !important;
     background-color: var(--color__primary) !important;
@@ -15,14 +14,10 @@
     border-radius: 25px 0px 0px 0px !important;
     border: solid #0077cc 1px !important;
 }
-
-
 .button-search {
     border-radius: 0px 0px 25px 0px !important;
     border: solid #0077cc 1px !important;
 }
-
-
 
 .button-cart {
     font-size: 20px !important;
@@ -33,7 +28,6 @@
 .search-brand-collapse {
     font-size: 12px;
 }
-
 
 .search-brand-collapse .sidebar {
     background: rgba(255, 255, 255, 0.978);
@@ -56,7 +50,6 @@ body.search-brand .search-brand-collapse .sidebar {
 body.search-brand-collapse {
     right: 30px;
 }
-
 
 #carousel {
     max-height: 350px;
@@ -168,8 +161,6 @@ body.search-brand-collapse {
     height: 180px;
     object-fit: cover;
 }
-
-
 
 .product-info {
     flex-grow: 1;
@@ -2057,7 +2048,6 @@ body.search-brand-collapse {
     font-size: 10px;
 }
 
-/* Hover sutil */
 .product-card:hover .prescription-badge {
     background-color: #471396;
     color: white;
