@@ -28,10 +28,6 @@ Route::get('/Laboratorio/{keyword}', [WebController::class, 'laboratory'])->name
 Route::get('/carrito-de-compras', [WebController::class, 'cart'])->name('web.cart');
 Route::post('/cart/process-order', [OrderController::class, 'processOrder'])->name('web.cart.process-order');
 
-
-
-
-
 // Authentication Routes
 Route::middleware(['guest'])->group(function () {
 
@@ -89,8 +85,6 @@ Route::middleware(['auth'])->group(function () {
     // Client management routes
     Route::resource('/admin/clients', ClientController::class)->only(['index', 'show', 'update'])->names('admin.clients');
     Route::get('/admin/clients/{client}/purchases', [ClientController::class, 'showPurchases'])->name('admin.clients.purchases');
-
-
 
     // Logout route
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
