@@ -127,7 +127,6 @@ class WebController extends Controller
                     });
             });
 
-        // Aplicar ordenamiento por precio  
         if ($priceOrder === 'asc') {
             $productsQuery->orderBy('price', 'asc');
         } elseif ($priceOrder === 'desc') {
@@ -158,19 +157,16 @@ class WebController extends Controller
 
     public function laboratory($keyword)
     {
-        // Buscar el laboratorio por keyword  
         $laboratory = Laboratory::where('keyword', $keyword)->firstOrFail();
 
-        // Obtener TODOS los productos del laboratorio ordenados por ventas (sin límite)  
         $products = Product::with(['category', 'tax'])
             ->where('stock', '>', 0)
             ->where('laboratory', 'LIKE', '%' . $laboratory->keyword . '%')
             ->orderBy('sales', 'desc')
-            ->get(); // Sin limit() para traer todos  
+            ->get();
 
         $dayRate = DayRate::latest()->first();
 
-        // Contar total de productos para mostrar en la vista  
         $totalProducts = $products->count();
 
         return view('web.laboratory', compact('laboratory', 'products', 'dayRate', 'totalProducts'));
