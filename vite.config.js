@@ -15,8 +15,6 @@ export default defineConfig({
                 "resources/assets/admin/js/plugins/perfect-scrollbar.min.js",
                 "resources/assets/admin/js/plugins/smooth-scrollbar.min.js",
                 "resources/assets/admin/js/plugins/chartjs.min.js",
-                "resources/assets/admin/js/plugins/chart.extension.js",
-
 
                 "resources/assets/admin/js/auth.js",                
                 "resources/assets/admin/js/app.min.js",
