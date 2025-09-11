@@ -26,8 +26,8 @@
 
     <meta name="robots" content="index, follow">
 
-    <link rel="canonical" href="https://farmacia701.com">
-
+    <link rel="canonical" href="{{ url()->current() }}">
+    
     <meta property="og:title" content="Farmacia en Ciudad Bolívar - Medicamentos y Entrega a Domicilio">
     <meta property="og:description" content="Farmacia en Ciudad Bolívar con servicio de entrega a domicilio. Encuentra medicamentos y productos de salud.">
     <meta property="og:image" content="https://farmacia701.com/img/banner.jpg">
