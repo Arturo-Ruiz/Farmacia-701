@@ -116,7 +116,7 @@
 
             const greetingMessage = getGreeting();
 
-            const message = `${greetingMessage} Farmacia 701! 💙 \n Quería saber si tienen este medicamento disponible 💊 y, de ser así, cuál es su costo. \n 💰 ¡Muchas gracias! 🙏\n\nMedicamento/Producto:`;
+            const message = `${greetingMessage} Farmacia 701! 💙\nQuería saber si tienen este medicamento disponible 💊 y, de ser así, cuál es su costo.\n💰 ¡Muchas gracias! 🙏\n\n *Medicamento/Producto:*`;
 
             const encodedMessage = encodeURIComponent(message);
 
