@@ -2073,3 +2073,10 @@ body.search-brand-collapse {
         border-radius: 60px 0px 60px 0px !important;
     }
 }
+
+.main-content {
+    padding-top: 5rem;
+    padding-bottom: 1rem;
+    min-height: 80vh;
+    z-index: 1;
+}

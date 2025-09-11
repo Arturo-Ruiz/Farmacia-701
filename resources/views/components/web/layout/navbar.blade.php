@@ -1,4 +1,4 @@
-<header class="navbar navbar-expand navbar-light bg-light shadow py-3 fixed-top z-1">
+<header class="navbar navbar-expand navbar-light bg-light shadow py-3 fixed-top">
     <nav class="container">
         <div class="col-3 d-flex align-items-center justify-content-center">
             <a class="navbar-brand" href="{{ route('web.home') }}">

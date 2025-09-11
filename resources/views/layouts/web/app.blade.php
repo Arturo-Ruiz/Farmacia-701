@@ -74,9 +74,8 @@
 <body class="@yield('body-class', '')">
     <x-web.layout.navbar />
 
-    <div class="main-content" style="margin-top: 90px;">
+    <div class="main-content">
         @yield('content')
-
     </div>
 
     <x-web.layout.whatsapp-float />
