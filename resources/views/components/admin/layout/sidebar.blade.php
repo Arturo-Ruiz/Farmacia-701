@@ -105,16 +105,24 @@
 
         </ul>
     </div>
+
     <div class="sidenav-footer mx-3 ">
         <div class="card card-plain shadow-none" id="sidenavCard">
-            <img class="w-50 mx-auto" src="https://demos.creative-tim.com/argon-dashboard/assets/img/illustrations/icon-documentation.svg" alt="sidebar_illustration">
+            <img class="w-50 mx-auto" src="{{asset('img/sidebar-illustration.svg')}}" alt="Imagen de ayuda">
             <div class="card-body text-center p-3 w-100 pt-0">
                 <div class="docs-info">
                     <h6 class="mb-0">Necesitas ayuda?</h6>
-                    <p class="text-xs font-weight-bold mb-0">C</p>
                 </div>
             </div>
         </div>
-        <a class="btn btn-primary btn-sm mb-0 w-100" href="{{ route('web.home') }}" type="button"><i class="fa-solid fa-house"></i> Ir al Inicio</a>
+
+        <a class="btn btn-primary btn-sm mb-2 w-100" href="{{ route('web.home') }}" type="button">
+            <i class="fa-solid fa-house me-2"></i>Ir al Inicio
+        </a>
+
+        <a class="btn btn-secondary btn-sm mb-0 w-100" href="https://github.com/Arturo-Ruiz" type="button">
+            <i class="fa-solid fa-headset me-2"></i>Soporte Técnico
+        </a>
     </div>
+
 </aside>

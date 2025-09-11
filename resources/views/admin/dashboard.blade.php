@@ -4,6 +4,7 @@
 
 @section('content')
 
+<!-- Métricas principales -->
 <div class="row">
     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
         <div class="card">
@@ -11,19 +12,19 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="numbers">
-                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
+                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Ventas de Hoy</p>
                             <h5 class="font-weight-bolder">
-                                $53,000
+                                $ {{ number_format($todaySales, 2) }}
                             </h5>
                             <p class="mb-0">
-                                <span class="text-success text-sm font-weight-bolder">+55%</span>
-                                since yesterday
+                                <span class="text-success text-sm font-weight-bolder">{{ $todaySalesCount }}</span>
+                                transacciones
                             </p>
                         </div>
                     </div>
                     <div class="col-4 text-end">
                         <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                            <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                            <i class="fa-solid fa-dollar-sign text-lg opacity-10" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
@@ -36,19 +37,21 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="numbers">
-                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
+                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Ventas del Mes</p>
                             <h5 class="font-weight-bolder">
-                                2,300
+                                $ {{ number_format($monthlySales, 2) }}
                             </h5>
                             <p class="mb-0">
-                                <span class="text-success text-sm font-weight-bolder">+3%</span>
-                                since last week
+                                <span class="text-{{ $salesGrowth >= 0 ? 'success' : 'danger' }} text-sm font-weight-bolder">
+                                    {{ $salesGrowth >= 0 ? '+' : '' }}{{ number_format($salesGrowth, 1) }}%
+                                </span>
+                                vs mes anterior
                             </p>
                         </div>
                     </div>
                     <div class="col-4 text-end">
                         <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                            <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                            <i class="fa-solid fa-chart-line text-lg opacity-10" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
@@ -61,19 +64,19 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="numbers">
-                            <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
+                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Clientes</p>
                             <h5 class="font-weight-bolder">
-                                +3,462
+                                {{ number_format($totalClients) }}
                             </h5>
                             <p class="mb-0">
-                                <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                                since last quarter
+                                <span class="text-success text-sm font-weight-bolder">Registrados</span>
+                                en el sistema
                             </p>
                         </div>
                     </div>
                     <div class="col-4 text-end">
                         <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                            <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                            <i class="fa-solid fa-users text-lg opacity-10" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
@@ -86,18 +89,19 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="numbers">
-                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
+                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Productos</p>
                             <h5 class="font-weight-bolder">
-                                $103,430
+                                {{ number_format($totalProducts) }}
                             </h5>
                             <p class="mb-0">
-                                <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
+                                <span class="text-info text-sm font-weight-bolder">Disponibles</span>
+                                en inventario
                             </p>
                         </div>
                     </div>
                     <div class="col-4 text-end">
                         <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                            <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                            <i class="fa-solid fa-pills text-lg opacity-10" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
@@ -106,274 +110,162 @@
     </div>
 </div>
 
+<!-- Gráfico de ventas y tasa actual -->
 <div class="row mt-4">
-    <div class="col-lg-7 mb-lg-0 mb-4">
+    <div class="col-lg-8 mb-lg-0 mb-4">
         <div class="card z-index-2 h-100">
             <div class="card-header pb-0 pt-3 bg-transparent">
-                <h6 class="text-capitalize">Sales overview</h6>
+                <h6 class="text-capitalize">
+                    <i class="fas fa-chart-line text-primary me-2"></i>Tendencia de Ventas (Últimos 30 días)
+                </h6>
                 <p class="text-sm mb-0">
                     <i class="fa fa-arrow-up text-success"></i>
-                    <span class="font-weight-bold">4% more</span> in 2021
+                    <span class="font-weight-bold">Ventas diarias en USD</span>
                 </p>
             </div>
             <div class="card-body p-3">
                 <div class="chart">
-                    <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
+                    <canvas id="chart-sales" class="chart-canvas" height="300"></canvas>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-5">
-        <div class="card card-carousel overflow-hidden h-100 p-0">
-            <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
-                <div class="carousel-inner border-radius-lg h-100">
-                    <div class="carousel-item h-100 active" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR132TBAD0-GhGhN8_2Xr-3obkFd4NzFbk6Hg&s');
-      background-size: cover;">
-                        <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                            <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                <i class="ni ni-camera-compact text-dark opacity-10"></i>
-                            </div>
-                            <h5 class="text-white mb-1">Get started with Argon</h5>
-                            <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at.</p>
-                        </div>
+    <div class="col-lg-4">
+        <div class="card mb-3">
+            <div class="card-header pb-0 p-3">
+                <h6 class="mb-0">
+                    <i class="fas fa-exchange-alt text-primary me-2"></i>Tasa del Día
+                </h6>
+            </div>
+            <div class="card-body p-3 text-center">
+                @if($currentRate)
+                <h2 class="text-primary mb-2">Bs. {{ number_format($currentRate->value, 2) }}</h2>
+                <p class="text-muted mb-0">por cada dólar</p>
+                <small class="text-muted">Actualizado: {{ $currentRate->updated_at->format('d/m/Y H:i') }}</small>
+                @else
+                <p class="text-muted">No hay tasa configurada</p>
+                @endif
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header pb-0 p-3">
+                <h6 class="mb-0">
+                    <i class="fas fa-exchange-alt text-primary me-2"></i>Resumen del Día
+                </h6>
+            </div>
+            <div class="card-body p-3 text-center">
+                <h6><i class="fas fa-chart-line text-primary me-2"></i>Resumen del Día</h6>
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <small class="text-muted d-block">Ventas Hoy</small>
+                        <h6 class="text-primary mb-0">{{ $todaySalesCount }}</h6>
                     </div>
-                    <div class="carousel-item h-100" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR132TBAD0-GhGhN8_2Xr-3obkFd4NzFbk6Hg&s');
-      background-size: cover;">
-                        <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                            <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                <i class="ni ni-bulb-61 text-dark opacity-10"></i>
-                            </div>
-                            <h5 class="text-white mb-1">Faster way to create web pages</h5>
-                            <p>That’s my skill. I’m not really specifically talented at anything except for the ability to learn.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item h-100" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR132TBAD0-GhGhN8_2Xr-3obkFd4NzFbk6Hg&s');
-      background-size: cover;">
-                        <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                            <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                <i class="ni ni-trophy text-dark opacity-10"></i>
-                            </div>
-                            <h5 class="text-white mb-1">Share with us your design tips!</h5>
-                            <p>Don’t be afraid to be wrong because you can’t learn anything from a compliment.</p>
-                        </div>
+                    <div class="col-6">
+                        <small class="text-muted d-block">Total Hoy</small>
+                        <h6 class="text-success mb-0">${{ number_format($todaySales, 2) }}</h6>
                     </div>
                 </div>
-                <button class="carousel-control-prev w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Gráficos de análisis -->
+<div class="row mt-4">
+    <!-- Tipos de Entrega -->
+    <div class="col-lg-4 mb-4">
+        <div class="card">
+            <div class="card-header pb-0 p-3">
+                <h6 class="mb-0">
+                    <i class="fas fa-truck text-primary me-2"></i>Tipos de Entrega
+                </h6>
+            </div>
+            <div class="card-body p-3">
+                <canvas id="chart-delivery-types" class="chart-canvas" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ventas por Laboratorio (Barras) -->
+    <div class="col-lg-8 mb-4">
+        <div class="card">
+            <div class="card-header pb-0 p-3">
+                <h6 class="mb-0">
+                    <i class="fas fa-flask text-primary me-2"></i>Ventas por Laboratorio
+                </h6>
+            </div>
+            <div class="card-body p-3">
+                <canvas id="chart-laboratory-sales" class="chart-canvas" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Productos más vendidos y clientes activos -->
 <div class="row mt-4">
     <div class="col-lg-7 mb-lg-0 mb-4">
-        <div class="card ">
+        <div class="card">
             <div class="card-header pb-0 p-3">
-                <div class="d-flex justify-content-between">
-                    <h6 class="mb-2">Sales by Country</h6>
-                </div>
+                <h6 class="mb-0">
+                    <i class="fas fa-star text-primary me-2"></i>Productos Más Vendidos
+                </h6>
             </div>
             <div class="table-responsive">
-                <table class="table align-items-center ">
+                <table class="table align-items-center">
+                    <thead>
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Producto</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Cantidad</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total</th>
+                        </tr>
+                    </thead>
                     <tbody>
+                        @foreach($topProducts as $product)
                         <tr>
-                            <td class="w-30">
-                                <div class="d-flex px-2 py-1 align-items-center">
-                                    <div>
-                                        <img src="{{ asset('img/logo.png') }}" width="50px" alt="Country flag">
-                                    </div>
-                                    <div class="ms-4">
-                                        <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                        <h6 class="text-sm mb-0">United States</h6>
+                            <td>
+                                <div class="d-flex px-2 py-1">
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm">{{ $product['name'] }}</h6>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <div class="text-center">
-                                    <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                    <h6 class="text-sm mb-0">2500</h6>
-                                </div>
+                                <span class="badge badge-sm bg-gradient-success">{{ $product['quantity'] }}</span>
                             </td>
-                            <td>
-                                <div class="text-center">
-                                    <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                    <h6 class="text-sm mb-0">$230,900</h6>
-                                </div>
-                            </td>
-                            <td class="align-middle text-sm">
-                                <div class="col text-center">
-                                    <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                    <h6 class="text-sm mb-0">29.9%</h6>
-                                </div>
+                            <td class="align-middle text-center text-sm">
+                                <span class="text-xs font-weight-bold">${{ number_format($product['total'], 2) }}</span>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="w-30">
-                                <div class="d-flex px-2 py-1 align-items-center">
-                                    <div>
-                                        <img src="{{ asset('img/logo.png') }}" width="50px" alt="Country flag">
-                                    </div>
-                                    <div class="ms-4">
-                                        <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                        <h6 class="text-sm mb-0">Germany</h6>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="text-center">
-                                    <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                    <h6 class="text-sm mb-0">3.900</h6>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="text-center">
-                                    <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                    <h6 class="text-sm mb-0">$440,000</h6>
-                                </div>
-                            </td>
-                            <td class="align-middle text-sm">
-                                <div class="col text-center">
-                                    <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                    <h6 class="text-sm mb-0">40.22%</h6>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-30">
-                                <div class="d-flex px-2 py-1 align-items-center">
-                                    <div>
-                                        <img src="{{ asset('img/logo.png') }}" width="50px" alt="Country flag">
-                                    </div>
-                                    <div class="ms-4">
-                                        <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                        <h6 class="text-sm mb-0">Great Britain</h6>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="text-center">
-                                    <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                    <h6 class="text-sm mb-0">1.400</h6>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="text-center">
-                                    <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                    <h6 class="text-sm mb-0">$190,700</h6>
-                                </div>
-                            </td>
-                            <td class="align-middle text-sm">
-                                <div class="col text-center">
-                                    <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                    <h6 class="text-sm mb-0">23.44%</h6>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-30">
-                                <div class="d-flex px-2 py-1 align-items-center">
-                                    <div>
-                                        <img src="{{ asset('img/logo.png') }}" width="50px" alt="Country flag">
-                                    </div>
-                                    <div class="ms-4">
-                                        <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                        <h6 class="text-sm mb-0">Brasil</h6>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="text-center">
-                                    <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                    <h6 class="text-sm mb-0">562</h6>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="text-center">
-                                    <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                    <h6 class="text-sm mb-0">$143,960</h6>
-                                </div>
-                            </td>
-                            <td class="align-middle text-sm">
-                                <div class="col text-center">
-                                    <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                    <h6 class="text-sm mb-0">32.14%</h6>
-                                </div>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
     <div class="col-lg-5">
         <div class="card">
             <div class="card-header pb-0 p-3">
-                <h6 class="mb-0">Categories</h6>
+                <h6 class="mb-0">
+                    <i class="fa-solid fa-users me-2"></i>Clientes Más Activos
+                </h6>
             </div>
             <div class="card-body p-3">
                 <ul class="list-group">
+                    @foreach($topClients as $client)
                     <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                         <div class="d-flex align-items-center">
-                            <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                                <i class="ni ni-mobile-button text-white opacity-10"></i>
+                            <div class="icon icon-shape icon-sm me-3 bg-gradient-primary shadow text-center">
+                                <i class="fa-solid fa-user text-white opacity-10"></i>
                             </div>
                             <div class="d-flex flex-column">
-                                <h6 class="mb-1 text-dark text-sm">Devices</h6>
-                                <span class="text-xs">250 in stock, <span class="font-weight-bold">346+ sold</span></span>
+                                <h6 class="mb-1 text-dark text-sm">{{ $client->name }}</h6>
+                                <span class="text-xs">{{ $client->sales_count }} compras</span>
                             </div>
-                        </div>
-                        <div class="d-flex">
-                            <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
                         </div>
                     </li>
-                    <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                        <div class="d-flex align-items-center">
-                            <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                                <i class="ni ni-tag text-white opacity-10"></i>
-                            </div>
-                            <div class="d-flex flex-column">
-                                <h6 class="mb-1 text-dark text-sm">Tickets</h6>
-                                <span class="text-xs">123 closed, <span class="font-weight-bold">15 open</span></span>
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
-                        </div>
-                    </li>
-                    <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                        <div class="d-flex align-items-center">
-                            <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                                <i class="ni ni-box-2 text-white opacity-10"></i>
-                            </div>
-                            <div class="d-flex flex-column">
-                                <h6 class="mb-1 text-dark text-sm">Error logs</h6>
-                                <span class="text-xs">1 is active, <span class="font-weight-bold">40 closed</span></span>
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
-                        </div>
-                    </li>
-                    <li class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
-                        <div class="d-flex align-items-center">
-                            <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                                <i class="ni ni-satisfied text-white opacity-10"></i>
-                            </div>
-                            <div class="d-flex flex-column">
-                                <h6 class="mb-1 text-dark text-sm">Happy users</h6>
-                                <span class="text-xs font-weight-bold">+ 430</span>
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
-                        </div>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -382,7 +274,14 @@
 
 @endsection
 
-
 @push('scripts')
-    @vite(['resources/assets/admin/js/dashboard.js'])
+<script>
+    // Pasar datos a JavaScript de forma global  
+    window.dashboardData = {
+        dailySales: @json($dailySales),
+        deliveryTypes: @json($deliveryTypes),
+        salesByLaboratory: @json($salesByLaboratory)
+    };
+</script>
+@vite(['resources/assets/admin/js/dashboard.js'])
 @endpush

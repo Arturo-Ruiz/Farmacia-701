@@ -88,7 +88,7 @@
     <script src="{{asset('js/admin/bootstrap.min.js')}}"></script>
 
 
-    @vite(['resources/js/app.js','resources/assets/admin/js/app.min.js', 'resources/assets/admin/js/plugins/perfect-scrollbar.min.js', 'resources/assets/admin/js/plugins/smooth-scrollbar.min.js', 'resources/assets/admin/js/plugins/chartjs.min.js', ])
+    @vite(['resources/js/app.js','resources/assets/admin/js/app.min.js', 'resources/assets/admin/js/plugins/perfect-scrollbar.min.js', 'resources/assets/admin/js/plugins/smooth-scrollbar.min.js', 'resources/assets/admin/js/plugins/chartjs.min.js', 'resources/assets/admin/js/plugins/chartjs.min.js','resources/assets/admin/js/plugins/chart.extension.js'])
 
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
