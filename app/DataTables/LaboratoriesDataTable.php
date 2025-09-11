@@ -45,7 +45,7 @@ class LaboratoriesDataTable extends DataTable
             ->setTableId('laboratories-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->orderBy(0, 'desc')
+            ->orderBy(0, 'asc')
             ->selectStyleSingle()
             ->parameters([
                 'language' => [
