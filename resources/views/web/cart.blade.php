@@ -117,8 +117,9 @@
                                 placeholder="Ingrese productos requeridos que no aparecen en el catálogo"></textarea>
                         </div>
 
+
                         <button type="submit" class="btn bg-primary-color text-white btn-lg w-100">
-                            Enviar pedido
+                            <i class="fas fa-paper-plane me-2"></i>Enviar pedido
                         </button>
                     </form>
                 </div>

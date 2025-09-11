@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Historial de Compras - ' . $client->name)
+@section('title', 'Historial de Compras')
 
 @section('content')
 
@@ -237,7 +237,7 @@
 
                         @if($sale->product_request)
                         <div class="p-2" style="background: rgba(52, 144, 220, 0.1); border-radius: 8px; border: 1px solid rgba(52, 144, 220, 0.2);">
-                            <div class="d-flex align-items-start">
+                            <div class="d-flex align-items-start">  
                                 <div class="me-2 flex-shrink-0" style="background: linear-gradient(135deg, #3498db, #2980b9); border-radius: 6px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
                                     <i class="fas fa-comment text-white" style="font-size: 0.6rem;"></i>
                                 </div>

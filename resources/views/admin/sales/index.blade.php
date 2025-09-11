@@ -151,11 +151,18 @@
                         </table>  
                     </div>  
                     
-                    ${sale.product_request ? `  
-                        <h6 class="mt-3"><i class="fas fa-comment-dots text-info me-2"></i>Solicitud Especial</h6>  
-                        <div class="alert alert-info">  
-                            <i class="fas fa-info-circle me-2"></i>${sale.product_request}  
-                        </div>  
+                    ${sale.product_request ? `              
+                        <div class="p-2 mt-3" style="background: rgba(52, 144, 220, 0.1); border-radius: 8px; border: 1px solid rgba(52, 144, 220, 0.2);">
+                            <div class="d-flex align-items-start">  
+                                <div class="me-2 flex-shrink-0" style="background: linear-gradient(135deg, #3498db, #2980b9); border-radius: 6px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-comment text-white" style="font-size: 0.6rem;"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="mb-0" style="font-size: 0.7rem; color: #6c757d;">SOLICITUD DE PRODUCTOS</p>
+                                    <small class="text-dark">${sale.product_request}  </small>
+                                </div>
+                            </div>
+                        </div>
                     ` : ''}  
                 `;
 
