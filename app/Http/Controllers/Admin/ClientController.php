@@ -35,13 +35,20 @@ class ClientController extends Controller
         return response()->json(['message' => 'Cliente actualizado exitosamente']);
     }
 
-    public function showPurchases(Client $client)
+    public function showPurchases(Client $client, Request $request)
     {
-        $sales = $client->sales()
-            ->with(['client'])
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
+        $query = $client->sales()->with(['client']);
 
+        if ($request->filled('start_date')) {
+            $query->whereDate('created_at', '>=', $request->start_date);
+        }
+
+        if ($request->filled('fecha_fin')) {
+            $query->whereDate('created_at', '<=', $request->fecha_fin);
+        }
+
+        $sales = $query->orderBy('created_at', 'desc')->paginate(5);
+        
         $dayRate = DayRate::latest()->first();
 
         return view('admin.clients.purchases', compact('client', 'sales', 'dayRate'));

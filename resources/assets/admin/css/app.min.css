@@ -27920,3 +27920,12 @@ screen and (-ms-high-contrast:active) {
 .div.dt-container div.dt-length select {
     width: 100px !important;
 }
+
+.icon-sidenav {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px
+}
