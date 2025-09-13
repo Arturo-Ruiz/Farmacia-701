@@ -25,12 +25,13 @@ class ClientController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'id_card' => 'sometimes|required|string|unique:clients,id_card,' . $client->id,
             'email' => 'nullable|email',
             'phone' => 'nullable|string|max:20',
             'address' => 'nullable|string',
         ]);
 
-        $client->update($request->only(['name', 'email', 'phone', 'address']));
+        $client->update($request->only(['name', 'id_card', 'email', 'phone', 'address']));
 
         return response()->json(['message' => 'Cliente actualizado exitosamente']);
     }
