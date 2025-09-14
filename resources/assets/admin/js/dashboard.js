@@ -4,12 +4,16 @@ if (typeof window.dashboardData !== "undefined") {
 
     // Procesar datos para el gráfico de ventas
     const salesLabels = dailySales.map((item) => {
-        const date = new Date(item.date);
+        const date = new Date(item.date + "T12:00:00");
         return date.toLocaleDateString("es-ES", {
             month: "short",
             day: "numeric",
         });
     });
+
+    console.log("Sales Labels:", salesLabels); // Depuración
+    console.log("Daily Sales Data:", dailySales); // Depuración
+
     const salesValues = dailySales.map((item) => parseFloat(item.total));
 
     // Procesar datos para laboratorios - VARIABLES CORREGIDAS
@@ -229,8 +233,6 @@ if (typeof window.dashboardData !== "undefined") {
             },
         });
     }
-
-   
 }
 
 // Código del scrollbar - mantener igual que el dashboard original
