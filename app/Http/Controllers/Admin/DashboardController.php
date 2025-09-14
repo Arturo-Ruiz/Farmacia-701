@@ -43,8 +43,8 @@ class DashboardController extends Controller
             DB::raw('COUNT(*) as count')
         )
             ->whereDate('created_at', '>=', now()->subDays(30)->toDateString())
-            ->groupBy('date')
-            ->orderBy('date')
+            ->groupBy(DB::raw('DATE(created_at)'))
+            ->orderBy(DB::raw('DATE(created_at)'))
             ->get();
 
         $salesByLaboratory = Sale::select('products')
