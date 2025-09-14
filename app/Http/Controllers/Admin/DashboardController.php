@@ -16,10 +16,9 @@ class DashboardController extends Controller
     public function index()
     {
         // Métricas principales  
-
         $todaySales = Sale::whereDate('created_at', today())->sum('total_amount');
         $todaySalesCount = Sale::whereDate('created_at', today())->count();
-
+        
         $totalClients = Client::count();
         $totalProducts = Product::count();
 
@@ -37,11 +36,14 @@ class DashboardController extends Controller
             (($monthlySales - $lastMonthSales) / $lastMonthSales) * 100 : 0;
 
         // Ventas por día (últimos 30 días)  
-        $dailySales = Sale::selectRaw('DATE(created_at) as date, SUM(total_amount) as total, COUNT(*) as count')
-            ->where('created_at', '>=', now()->subDays(30)->startOfDay())
-            ->where('created_at', '<=', now()->endOfDay())
-            ->groupByRaw('DATE(created_at)')
-            ->orderByRaw('DATE(created_at)')
+        $dailySales = Sale::select(
+            DB::raw('DATE(created_at) as date'),
+            DB::raw('SUM(total_amount) as total'),
+            DB::raw('COUNT(*) as count')
+        )
+            ->where('created_at', '>=', now()->subDays(30))
+            ->groupBy('date')
+            ->orderBy('date')
             ->get();
 
         $salesByLaboratory = Sale::select('products')
