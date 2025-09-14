@@ -37,14 +37,11 @@ class DashboardController extends Controller
             (($monthlySales - $lastMonthSales) / $lastMonthSales) * 100 : 0;
 
         // Ventas por día (últimos 30 días)  
-        $dailySales = Sale::select(
-            DB::raw('DATE(created_at) as date'),
-            DB::raw('SUM(total_amount) as total'),
-            DB::raw('COUNT(*) as count')
-        )
-            ->whereDate('created_at', '>=', now()->subDays(30)->toDateString())
-            ->groupBy(DB::raw('DATE(created_at)'))
-            ->orderBy(DB::raw('DATE(created_at)'))
+        $dailySales = Sale::selectRaw('DATE(created_at) as date, SUM(total_amount) as total, COUNT(*) as count')
+            ->where('created_at', '>=', now()->subDays(30)->startOfDay())
+            ->where('created_at', '<=', now()->endOfDay())
+            ->groupByRaw('DATE(created_at)')
+            ->orderByRaw('DATE(created_at)')
             ->get();
 
         $salesByLaboratory = Sale::select('products')
