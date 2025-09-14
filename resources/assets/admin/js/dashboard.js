@@ -11,9 +11,6 @@ if (typeof window.dashboardData !== "undefined") {
         });
     });
 
-    console.log("Sales Labels:", salesLabels); // Depuración
-    console.log("Daily Sales Data:", dailySales); // Depuración
-
     const salesValues = dailySales.map((item) => parseFloat(item.total));
 
     // Procesar datos para laboratorios - VARIABLES CORREGIDAS
