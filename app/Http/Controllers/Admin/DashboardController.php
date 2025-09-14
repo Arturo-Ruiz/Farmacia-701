@@ -16,7 +16,7 @@ class DashboardController extends Controller
     public function index()
     {
         // Métricas principales  
-        
+
         $todaySales = Sale::whereDate('created_at', today())->sum('total_amount');
         $todaySalesCount = Sale::whereDate('created_at', today())->count();
 
@@ -42,7 +42,7 @@ class DashboardController extends Controller
             DB::raw('SUM(total_amount) as total'),
             DB::raw('COUNT(*) as count')
         )
-            ->where('created_at', '>=', now()->subDays(30))
+            ->whereDate('created_at', '>=', now()->subDays(30)->toDateString())
             ->groupBy('date')
             ->orderBy('date')
             ->get();
@@ -60,8 +60,8 @@ class DashboardController extends Controller
                     'quantity_sold' => $products->sum('quantity')
                 ];
             })
-            ->sortByDesc('quantity_sold') 
-            ->take(20) 
+            ->sortByDesc('quantity_sold')
+            ->take(20)
             ->values();
 
         // Top productos más vendidos  
