@@ -12,6 +12,8 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Support\Facades\Storage;
 
+use App\Models\Product;
+
 use function Pest\Laravel\call;
 
 class ProductController extends Controller
@@ -32,8 +34,14 @@ class ProductController extends Controller
         ]);
 
         try {
-            Excel::import(new ProductsImport, filePath: $request->file('excel_file'));
-            return response()->json(['message' => 'Productos importados exitosamente.']);
+            $excelData = Excel::toArray(new ProductsImport, $request->file('excel_file'));
+            $excelProductIds = collect($excelData[0])->pluck(0)->filter()->toArray();
+
+            Excel::import(new ProductsImport, $request->file('excel_file'));
+
+            Product::whereNotIn('id', $excelProductIds)->update(['stock' => 0]);
+
+            return response()->json(['message' => 'Productos sincronizados exitosamente.']);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Error al importar: ' . $e->getMessage()], 422);
         }
