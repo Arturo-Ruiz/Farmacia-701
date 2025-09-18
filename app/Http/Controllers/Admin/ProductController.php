@@ -43,10 +43,10 @@ class ProductController extends Controller
 
             DB::commit();
             
-            return response()->json(['message' => 'Productos sincronizados exitosamente.']);
+            return response()->json(['message' => 'Productos importados correctamente.']);
         } catch (\Exception $e) {
             DB::rollBack();
-            return response()->json(['error' => 'Error al sincronizar: ' . $e->getMessage()], 422);
+            return response()->json(['error' => 'Error al importar: ' . $e->getMessage()], 422);
         }
     }
 
