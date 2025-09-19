@@ -111,33 +111,27 @@
                 updateCartCounter();
             }
 
-            function getGreeting() {
-                const now = new Date();
-                const hour = now.getHours();
-                let greeting = '';
+            const getGreeting = () => {
+                const hour = new Date().getHours();
+                if (hour >= 6 && hour < 12) return '¡Hola, buenos días 🌤️,';
+                if (hour >= 12 && hour < 19) return '¡Hola, buenas tardes 🌇,';
+                if (hour >= 19 || hour < 6) return '¡Hola, buenas noches 🌙,';
+            };
 
-                if (hour >= 6 && hour < 12) {
-                    greeting = '¡Hola, buenos días 🌤️,';
-                } else if (hour >= 12 && hour < 19) {
-                    greeting = '¡Hola, buenas tardes 🌇,';
-                } else {
-                    greeting = '¡Hola, buenas noches 🌙,';
+            const setWhatsappLink = (elementId, phoneNumber, message) => {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    const encodedMessage = encodeURIComponent(message);
+                    element.href = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
                 }
-                return greeting;
-            }
-
-            const whatsappLink = document.getElementById('whatsapp-link');
+            };
 
             const greetingMessage = getGreeting();
-
-            const message = `${greetingMessage} Farmacia 701! 💙\nQuería saber si tienen este medicamento disponible 💊 y, de ser así, cuál es su costo.\n💰 ¡Muchas gracias! 🙏\n\n *Medicamento/Producto:*`;
-
-            const encodedMessage = encodeURIComponent(message);
-
+            const baseMessage = `${greetingMessage} Farmacia 701! 💙\nQuería saber si tienen este medicamento disponible 💊 y, de ser así, cuál es su costo.\n💰 ¡Muchas gracias! 🙏\n\n *Medicamento/Producto:*`;
             const phoneNumber = '584141850671';
-            const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
 
-            whatsappLink.href = whatsappUrl;
+            setWhatsappLink('whatsapp-link', phoneNumber, baseMessage);
+            setWhatsappLink('whatsapp-icon-footer', phoneNumber, baseMessage);
         });
     </script>
 

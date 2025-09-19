@@ -11,7 +11,7 @@
 
                 <div class="d-flex align-items-center justify-content-center gap-3">
                     <div>
-                        <a href="https://api.whatsapp.com/send?phone=584141850671&text=Hola,%20Farmacia%20701." target="_blank" aria-label="Whatsapp Farmacia 701">
+                        <a href="https://api.whatsapp.com/send?phone=584141850671&text=Hola,%20Farmacia%20701." target="_blank" aria-label="Whatsapp Farmacia 701" id="whatsapp-icon-footer">
                             <i class="fa-brands fa-whatsapp icon-footer"></i>
                         </a>
                     </div>

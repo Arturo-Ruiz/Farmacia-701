@@ -63,6 +63,8 @@
         :showLoadMore="false" />
 </div>
 @else
+
+
 <section class="py-5 bg-light fade-in-up empty-products-section">
     <div class="container">
         <div class="text-center">
@@ -75,6 +77,8 @@
         </div>
     </div>
 </section>
+
+
 @endif
 @endsection
 
