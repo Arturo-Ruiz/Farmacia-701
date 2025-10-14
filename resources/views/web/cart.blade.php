@@ -174,8 +174,12 @@
                             <div class="col-6 text-end">
                                 <span class="fw-bold price-size" id="cart-total-amount-bs">Bs. 0.00</span>
                                 <span class="text-muted d-block price-size" id="cart-total-amount-dollars">$. 0.00</span>
-
                             </div>
+                        </div>
+                        <div class="text-end mt-3">
+                            <button type="button" class="btn btn-outline-danger btn-sm" id="clear-cart-btn" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
+                                <i class="fas fa-trash-alt me-1"></i>Vaciar carrito
+                            </button>
                         </div>
                     </div>
 
@@ -585,6 +589,45 @@
                 }
             });
         }
+
+        $(document).on('click', '#clear-cart-btn', function() {
+            const cart = JSON.parse(sessionStorage.getItem('cart') || '[]');
+
+            if (cart.length === 0) {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Carrito vacío',
+                    text: 'No hay productos en el carrito',
+                    confirmButtonColor: '#212529'
+                });
+                return;
+            }
+
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: 'Se eliminarán todos los productos del carrito',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Sí, vaciar carrito',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    sessionStorage.removeItem('cart');
+                    loadCartItems();
+                    updateCartCounter();
+
+                    Swal.fire({
+                        title: 'El Carrito está vacío',
+                        text: 'Todos los productos han sido eliminados',
+                        icon: 'success',
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                }
+            });
+        });
     });
 </script>
 @endpush

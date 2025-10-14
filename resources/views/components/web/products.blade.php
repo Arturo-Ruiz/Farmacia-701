@@ -138,6 +138,7 @@
 
     $('#load-more-btn').click(function() {
         const button = $(this);
+        
         button.prop('disabled', true).html('<i class="fas fa-spinner fa-spin me-2"></i>Cargando...');
 
         // Variables pasadas desde el componente  
@@ -456,6 +457,8 @@
         updateCartCounter();
         initializeCartButtons();
 
+
+        // Animación de entrada para tarjetas de productos existentes 
         $('.product-card').each(function(index) {
             $(this).css({
                 'opacity': '0',
@@ -466,6 +469,8 @@
         });
 
         const urlParams = new URLSearchParams(window.location.search);
+
+        
         const priceOrder = urlParams.get('price_order');
         if (priceOrder) {
             $('#price-filter').val(priceOrder);
@@ -492,6 +497,8 @@
             currentUrl.searchParams.delete('offset');
             window.location.href = currentUrl.toString();
         });
+
+
     });
 </script>
 @endpush
