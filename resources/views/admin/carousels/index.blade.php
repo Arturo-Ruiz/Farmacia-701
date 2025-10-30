@@ -12,10 +12,10 @@
                 </h5>
                 <p class="mb-0 small">Gestiona las imágenes del Carousel</p>
             </div>
-            <!-- <button id="createCarouselBtn" class="btn btn-primary btn-md m-0 shadow-sm">
+            <button id="createCarouselBtn" class="btn btn-primary btn-md m-0 shadow-sm">
                 <i class="fa-solid fa-plus me-1"></i>
-                <span class="font-weight-bold">Nueva Imagen</span>
-            </button> -->
+                <span class="font-weight-bold">Nueva Imagen del Carousel</span>
+            </button>
         </div>
     </div>
     <div class="card-body p-4">
