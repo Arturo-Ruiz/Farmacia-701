@@ -249,7 +249,7 @@
         };
 
         // Event listeners  
-        // document.getElementById('createCarouselBtn').addEventListener('click', openModalForCreate);
+        document.getElementById('createCarouselBtn').addEventListener('click', openModalForCreate);
         document.getElementById('saveCarouselBtn').addEventListener('click', saveCarousel);
 
         document.getElementById('image').addEventListener('change', function(e) {
