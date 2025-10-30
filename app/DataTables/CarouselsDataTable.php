@@ -39,28 +39,28 @@ class CarouselsDataTable extends DataTable
         </div>  
     ';
             })
-            ->addColumn('action', function (Carousel $carousel) {
-                return '  
-        <div class="d-flex justify-content-center align-items-center gap-2 h-100">  
-            <button class="btn btn-success edit-btn" data-id="' . $carousel->id . '">  
-                <i class="fa-solid fa-pencil me-1"></i>Editar  
-            </button>  
-
-        </div>  
-    ';
-            })
     //         ->addColumn('action', function (Carousel $carousel) {
     //             return '  
     //     <div class="d-flex justify-content-center align-items-center gap-2 h-100">  
     //         <button class="btn btn-success edit-btn" data-id="' . $carousel->id . '">  
     //             <i class="fa-solid fa-pencil me-1"></i>Editar  
     //         </button>  
-    //         <button class="btn btn-danger  delete-btn" data-id="' . $carousel->id . '">  
-    //             <i class="fa-solid fa-trash me-1"></i>Eliminar  
-    //         </button>  
+
     //     </div>  
     // ';
     //         })
+            ->addColumn('action', function (Carousel $carousel) {
+                return '  
+        <div class="d-flex justify-content-center align-items-center gap-2 h-100">  
+            <button class="btn btn-success edit-btn" data-id="' . $carousel->id . '">  
+                <i class="fa-solid fa-pencil me-1"></i>Editar  
+            </button>  
+            <button class="btn btn-danger  delete-btn" data-id="' . $carousel->id . '">  
+                <i class="fa-solid fa-trash me-1"></i>Eliminar  
+            </button>  
+        </div>  
+    ';
+            })
             ->rawColumns(['img', 'action'])
             ->setRowId('id');
     }
