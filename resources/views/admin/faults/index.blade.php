@@ -132,23 +132,25 @@
     <div class="col-12">
         <div class="card shadow-lg border-0">
             <div class="card-header pb-0">
-                <div class="container-fluid d-flex justify-content-between align-items-center mt-2">
-                    <div>
+                <div class="row mt-2">
+                    <div class="col-12 col-md-6 mb-3 mb-md-0">
                         <h5 class="m-0 font-weight-bold">
                             <i class="fas fa-exclamation-triangle me-2"></i>Alertas de Stock
                         </h5>
                         <p class="mb-0 small">Productos con stock fuera de los límites configurados</p>
                     </div>
-                    <div class="d-flex gap-2">
-                        <a href="{{ route('admin.faults.history') }}" class="btn btn-secondary btn-md m-0">
-                            <i class="fas fa-history me-2"></i>Ver Historial
-                        </a>
-                        <a href="{{ route('admin.faults.configuration') }}" class="btn btn-primary btn-md m-0">
-                            <i class="fas fa-cogs me-2"></i>Configurar Límites
-                        </a>
-                        <button type="button" class="btn btn-success btn-md m-0" data-bs-toggle="modal" data-bs-target="#createFaultModal">
-                            <i class="fas fa-plus me-2"></i>Crear Falla Manual
-                        </button>
+                    <div class="col-12 col-md-6">
+                        <div class="d-grid d-md-flex gap-2 justify-content-md-end">
+                            <a href="{{ route('admin.faults.history') }}" class="btn btn-secondary btn-md">
+                                <i class="fas fa-history me-2"></i>Ver Historial
+                            </a>
+                            <a href="{{ route('admin.faults.configuration') }}" class="btn btn-primary btn-md">
+                                <i class="fas fa-cogs me-2"></i>Configurar Límites
+                            </a>
+                            <button type="button" class="btn btn-success btn-md" data-bs-toggle="modal" data-bs-target="#createFaultModal">
+                                <i class="fas fa-plus me-2"></i>Crear Falla Manual
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
