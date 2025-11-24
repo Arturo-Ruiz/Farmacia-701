@@ -20,6 +20,8 @@ class Product extends Model
         'img',
         'medical_prescription',
         'sales',
+        'min_stock',
+        'max_stock',
     ];
 
     protected $casts = [
@@ -27,15 +29,23 @@ class Product extends Model
         'medical_prescription' => 'boolean',
         'stock' => 'integer',
         'sales' => 'integer',
+        'min_stock' => 'integer',
+        'max_stock' => 'integer',
     ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
+    
     public function tax()
     {
         return $this->belongsTo(Tax::class);
+    }
+
+    public function faults()
+    {
+        return $this->hasMany(ProductFault::class);
     }
 
     public function getImgUrlAttribute()

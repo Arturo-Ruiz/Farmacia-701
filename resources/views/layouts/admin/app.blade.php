@@ -27,6 +27,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    @stack('styles')
+
     @vite(['resources/assets/admin/css/app.min.css'])
 </head>
 
@@ -91,7 +93,6 @@
     @vite(['resources/js/app.js','resources/assets/admin/js/app.min.js', 'resources/assets/admin/js/plugins/perfect-scrollbar.min.js', 'resources/assets/admin/js/plugins/smooth-scrollbar.min.js', 'resources/assets/admin/js/plugins/chartjs.min.js', 'resources/assets/admin/js/plugins/chartjs.min.js'])
 
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-
 
     @stack('scripts')
 

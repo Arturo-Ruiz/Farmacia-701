@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\CarouselController;
 use App\Http\Controllers\Admin\LaboratoryController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\SaleController;
+use App\Http\Controllers\Admin\FaultController;
 
 
 use App\Http\Controllers\Web\WebController;
@@ -91,6 +92,14 @@ Route::middleware(['auth'])->group(function () {
 
     // Sales management routes
     Route::resource('/admin/sales', SaleController::class)->only(['index', 'show'])->names('admin.sales');
+
+    // Faults Module routes
+    Route::get('/admin/faults', [FaultController::class, 'index'])->name('admin.faults.index');
+    Route::get('/admin/faults/history', [FaultController::class, 'history'])->name('admin.faults.history');
+    Route::get('/admin/faults/configuration', [FaultController::class, 'configuration'])->name('admin.faults.configuration');
+    Route::put('/admin/faults/{id}', [FaultController::class, 'update'])->name('admin.faults.update');
+    Route::post('/admin/faults/manual', [FaultController::class, 'createManual'])->name('admin.faults.createManual');
+    Route::post('/admin/faults/{id}/mark-reviewed', [FaultController::class, 'markAsReviewed'])->name('admin.faults.markReviewed');
 
 
     // Logout route
