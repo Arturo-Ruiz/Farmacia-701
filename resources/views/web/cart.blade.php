@@ -42,15 +42,9 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Email (Opcional)</label>
-                            <input type="email" class="form-control" name="email"
-                                placeholder="Con tu email podrás participar de nuestras promociones">
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Teléfono (Opcional)</label>
+                            <label class="form-label">Teléfono</label>
                             <input type="tel" class="form-control" name="phone"
-                                placeholder="Coloca el Teléfono de la persona que retira o recibira el producto">
+                                placeholder="Teléfono de la persona que retira o recibira el producto" required>
                         </div>
 
                         <div class="mb-4">
