@@ -353,7 +353,27 @@
             const cart = JSON.parse(sessionStorage.getItem('cart') || '[]');
             const totalItems = cart.reduce((sum, item) => sum + parseInt(item.quantity), 0);
             $('.cart-counter').text(totalItems);
+
+            // Update floating cart counter with animation
+            const cartCounterFloat = document.querySelector('.cart-counter-float');
+            if (cartCounterFloat) {
+                cartCounterFloat.textContent = totalItems;
+                cartCounterFloat.style.display = totalItems > 0 ? 'flex' : 'none';
+                
+                // Trigger bounce animation
+                if (totalItems > 0) {
+                    cartCounterFloat.classList.remove('animate-add');
+                    void cartCounterFloat.offsetWidth; // Trigger reflow
+                    cartCounterFloat.classList.add('animate-add');
+                    
+                    // Remove animation class after it completes
+                    setTimeout(() => {
+                        cartCounterFloat.classList.remove('animate-add');
+                    }, 600);
+                }
+            }
         }
+
 
         $(document).on('click', '.increase-qty', function() {
             const index = $(this).data('index');

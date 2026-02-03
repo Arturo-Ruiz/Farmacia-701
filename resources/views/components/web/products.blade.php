@@ -345,7 +345,27 @@
             cartCounter.textContent = totalItems;
             cartCounter.style.display = totalItems > 0 ? 'inline' : 'none';
         }
+
+        // Update floating cart counter with animation
+        const cartCounterFloat = document.querySelector('.cart-counter-float');
+        if (cartCounterFloat) {
+            cartCounterFloat.textContent = totalItems;
+            cartCounterFloat.style.display = totalItems > 0 ? 'flex' : 'none';
+            
+            // Trigger bounce animation
+            if (totalItems > 0) {
+                cartCounterFloat.classList.remove('animate-add');
+                void cartCounterFloat.offsetWidth; // Trigger reflow
+                cartCounterFloat.classList.add('animate-add');
+                
+                // Remove animation class after it completes
+                setTimeout(() => {
+                    cartCounterFloat.classList.remove('animate-add');
+                }, 600);
+            }
+        }
     }
+
 
     function updateProductButton(productId, quantity) {
         const productCard = $(`.add-to-cart[data-product-id="${productId}"]`).closest('.product-button-container');

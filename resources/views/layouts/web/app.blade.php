@@ -93,6 +93,7 @@
     </div>
 
     <!-- <x-web.layout.whatsapp-float /> -->
+    <x-web.layout.cart-float />
     <x-web.layout.footer />
 
 
