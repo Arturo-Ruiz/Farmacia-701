@@ -92,7 +92,7 @@
         @yield('content')
     </div>
 
-    <x-web.layout.whatsapp-float />
+    <!-- <x-web.layout.whatsapp-float /> -->
     <x-web.layout.footer />
 
 
